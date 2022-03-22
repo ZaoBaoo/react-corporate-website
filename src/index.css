@@ -1,3 +1,18 @@
+html,
+body,
+.root {
+  font-size: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+*,
+*::before,
+*,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +26,109 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-color: #535d81;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* a:focus {
+  background-color: inherit !important;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  align-content: center; 
+  justify-content: center; 
+  overflow: auto;
+
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: -100px;
+  left: 0;
+}
+
+.login {
+  position: absolute;
+  background-color: rgb(17 17 17 / 40%);
+  border-radius: 10px;
+  padding: 20px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login__group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login__group a {
+  width: 100%;
+  font-weight: 600;
+  color: #a2a2a2;
+}
+
+.login__group a:hover {
+  background-color: rgb(17 17 17 / 40%) !important;
+}
+
+i.medium {
+  color: #535d81;
+  font-size: 2.7rem;
+}
+
+.login__title {
+  font-size: 32px;
+  font-weight: 500;
+  color: #535d81;
+}
+
+.version {
+  position: absolute;
+  top: 1px;
+  right: 6px;
+  font-size: 10px;
+
+  color: #747474;
+}
+
+.login input {
+  width: 320px !important;
+  color: #ffefef;
+  font-size: 18px !important;
+}
+
+.login input::placeholder {
+  color: #b2b2b2;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.login input:focus {
+  border-bottom: 1px solid rgb(229 178 255) !important;
+  box-shadow: none !important;
+}
+
+.registration__title {
+  color: #b2b2b2;
+  font-size: 14px;
+}
+
+.btn-wrapper {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-wrapper a,
+.login__group a {
+  background-color: transparent;
+}
+
+.btn-wrapper a:hover {
+  background-color: rgba(32, 32, 32, 0.4) !important;
+} */
