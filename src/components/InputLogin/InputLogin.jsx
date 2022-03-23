@@ -1,7 +1,14 @@
-import React from "react";
+import styles from "./InputLogin.module.scss";
 
-const InputLogin = () => {
-  return <div>123</div>;
+const InputLogin = ({ label }) => {
+  return (
+    <div className={styles.blockInput}>
+      <label>
+        <input type="text" />
+        <span>{label}</span>
+      </label>
+    </div>
+  );
 };
 
-export default InputLogin;
+export { InputLogin };

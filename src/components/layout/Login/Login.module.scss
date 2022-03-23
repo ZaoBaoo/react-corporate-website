@@ -11,8 +11,20 @@
     left: 0;
 }
 
-.groupInput {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 5rem;
-}
+.modal {
+    width: 40rem;
+    height: 40rem;
 
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 4rem;
+
+    // test
+    // gap: 3rem;
+}

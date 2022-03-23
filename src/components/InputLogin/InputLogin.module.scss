@@ -1,0 +1,40 @@
+.blockInput {
+    margin-bottom: 1rem;
+
+    label {
+        position: relative;
+    }
+
+    input {
+        width: 32rem;
+        height: 4rem;
+
+        border: none;
+        box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.15);
+        border-radius: 1rem;
+        padding: 0 1.5rem;
+
+        background: rgba(0, 0, 0, 0.3);
+        color: #B4B4B4;
+        font-size: 1.7rem;
+
+        &:active,
+        &:focus {
+            border: none;
+            outline: 0.1rem solid #ffffff;
+        }
+    }
+
+    span {
+        position: absolute;
+        top: -3.7rem;
+        left: 1.3rem;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        color: #B4B4B4;
+    }
+}

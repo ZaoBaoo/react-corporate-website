@@ -1,0 +1,28 @@
+.textLogin {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    color: #B7B7B7;
+}
+
+.textLinkedLogin {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.6rem;  
+    color: #5383FF;
+    
+    transition: color 0.2s linear;
+
+    &:hover {
+        color: #4d75da;
+    }
+}
+
+.right {
+    align-self: flex-end;
+    margin-bottom: 3rem;
+}

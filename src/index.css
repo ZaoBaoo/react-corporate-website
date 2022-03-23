@@ -11,6 +11,12 @@ body,
 *,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
@@ -28,8 +34,32 @@ code {
 }
 
 body {
-  background-color: #535d81;
+  background-color: #535D81;
   font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 420px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 350px) {
+  html {
+    font-size: 6px;
+  }
 }
 
 /* a:focus {

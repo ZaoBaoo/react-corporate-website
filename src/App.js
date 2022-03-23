@@ -10,15 +10,16 @@ import { Login } from "./components/layout/Login";
 function App() {
   return (
     <div className="app">
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        {/* <Route path="/" element={<Login />} />
-        <Route path="registration1" element={<Registration1 />} />
-        <Route path="registration2" element={<Registration2 />} />
-        <Route path="registration3" element={<Registration3 />} />
-        <Route path="test" element={<Test />} />
-        <Route path="*" element={<h1> Не найдено </h1>} /> */}
-      </Routes>
+      <Login />
+      {/* <Routes> */}
+      {/* <Route path="/login" index element={<Login />} /> */}
+      {/* <Route path="/" element={<Login />} />
+              <Route path="registration1" element={<Registration1 />} />
+              <Route path="registration2" element={<Registration2 />} />
+              <Route path="registration3" element={<Registration3 />} />
+              <Route path="test" element={<Test />} />
+              <Route path="*" element={<h1> Не найдено </h1>} /> */}{" "}
+      {/* </Routes> */}
     </div>
   );
 }

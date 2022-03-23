@@ -1,0 +1,30 @@
+.btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    cursor: pointer;
+    
+    color: #BEBEBE;
+
+    // background: rgba(0, 0, 0, 0.3);
+    background: transparent;
+
+    border: 0.1rem solid rgba(31, 31, 31, 0.3);
+    padding: 0.8rem 3rem;
+    border-radius: 1rem;
+
+    margin-top: 3rem;
+
+    transition: background 0.2s linear;
+
+    &:hover {
+        background: rgba(31, 31, 31, 0.3);
+        border: 0.1rem solid transparent;
+    }
+}
