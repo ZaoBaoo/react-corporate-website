@@ -1,18 +1,23 @@
-.btn {
+.btnReset {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    border: none;
+    display: inline-block;
 
+    cursor: pointer;
     font-family: 'Montserrat';
+}
+
+.btnLogin {
+
     font-style: normal;
     font-weight: 500;
     font-size: 2rem;
-    line-height: 2.4rem;
-    cursor: pointer;
+    line-height: 2.4rem;    
     
     color: #BEBEBE;
 
-    // background: rgba(0, 0, 0, 0.3);
     background: transparent;
 
     border: 0.1rem solid rgba(31, 31, 31, 0.3);
@@ -26,5 +31,44 @@
     &:hover {
         background: rgba(31, 31, 31, 0.3);
         border: 0.1rem solid transparent;
+    }
+}
+
+.btnRegistration {
+    font-family: Arial, sans-serif;
+
+    color: #BEBEBE;
+    background: #535D81;
+
+    font-size: 1.7rem;
+
+    margin-top: 1.3rem;
+    padding: 0.6rem 2.4rem;
+    position: relative;
+
+    border-radius: 0.2rem;
+    z-index: 1;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.2rem;
+        background: #454566;
+        top: 0;
+        left: -100%;
+        z-index: -1;
+
+        transition: all 0.25s ease-in-out;
+    }
+
+    &:hover::before {
+        left: 0;
+    }
+
+    span {
+        z-index: 2;
     }
 }

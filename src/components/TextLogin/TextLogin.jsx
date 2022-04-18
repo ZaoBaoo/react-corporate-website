@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
+import cn from "classnames";
 
 import styles from "./TextLogin.module.scss";
 
-const TextLogin = ({ text, linked, posLeft }) => {
-  const { textLogin, textLinkedLogin, right } = styles;
+const TextLogin = ({ text = "", linkedText, position, linkedTo }) => {
+  const { textLogin, textLinkedLogin, right, left, margin } = styles;
 
   return (
-    <div className={posLeft && right}>
+    <div
+      className={cn(margin, {
+        [right]: position === "right",
+        [left]: position === "left",
+      })}
+    >
       <span className={textLogin}>{text}</span>
-      {linked && (
-        <Link to="login">
-          <span className={textLinkedLogin}>{linked}</span>
+      {linkedText && (
+        <Link to={linkedTo}>
+          <span className={textLinkedLogin}>{linkedText}</span>
         </Link>
       )}
     </div>

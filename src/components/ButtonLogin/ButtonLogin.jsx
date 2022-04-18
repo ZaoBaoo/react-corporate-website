@@ -1,9 +1,16 @@
+import cn from "classnames";
 import styles from "./ButtonLogin.module.scss";
 
-const ButtonLogin = ({ name }) => {
+const ButtonLogin = ({ type, name, mode }) => {
   return (
-    <button type="button" className={styles.btn}>
-      {name}
+    <button
+      type={type}
+      className={cn(styles.btnReset, {
+        [styles.btnLogin]: mode === "login",
+        [styles.btnRegistration]: mode === "registration",
+      })}
+    >
+      <span>{name}</span>
     </button>
   );
 };

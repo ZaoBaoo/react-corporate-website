@@ -1,4 +1,13 @@
-.blockInput {
+.inputReset {
+    input {
+        outline: none;
+        border: none;
+    }  
+}
+
+// 1 One
+
+.inputBorder {
     margin-bottom: 1rem;
 
     label {
@@ -6,10 +15,11 @@
     }
 
     input {
-        width: 32rem;
-        height: 4rem;
+        // width: 32rem;
+        width: 35rem;
+        height: 4.2rem;
 
-        border: none;
+        border: 0.1rem solid transparent;
         box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.15);
         border-radius: 1rem;
         padding: 0 1.5rem;
@@ -18,23 +28,104 @@
         color: #B4B4B4;
         font-size: 1.7rem;
 
+        transition: border 0.2s ease-in-out;
+
         &:active,
         &:focus {
-            border: none;
-            outline: 0.1rem solid #ffffff;
+            border: 0.1rem solid #8d8d8d;
+        }
+    }
+    
+
+    span {
+        position: absolute;
+        top: -3.9rem;
+        left: 1.2rem;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.5rem;
+        line-height: 1.7rem;
+        color: #B4B4B4;
+    }
+
+    .error {
+        font-size: 1.2rem;
+        color: red;
+        position: absolute;
+        top: 3rem;
+        left: 0.5rem;
+    }
+}
+
+// 2 Two
+
+.inputLine {
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+    &:last-of-type {
+        margin-bottom: 1rem;
+    }
+
+    i {
+        color: #0000009a;
+        font-size: 2.8rem;
+        position: absolute;
+        top: -1rem;
+        right: 1rem;
+        cursor: pointer;
+    }
+
+    label {
+        position: relative;
+        cursor: text;
+    }
+
+    input {
+        // width: 32rem;
+        width: 35rem;
+        height: 4.2rem;
+
+        background: rgba(255, 0, 0, 0);
+        color: #e7e7e7;
+        font-size: 1.7rem;
+
+        border-bottom: 0.1rem solid #B4B4B4;
+
+        &:focus + span,
+        &:valid + span {
+            font-size: 1.2rem;
+            color: #7e7e7e;
+
+            top: -2.8rem;
+            left: -0.1rem;
+        }
+        &:focus {
+            border-bottom: 0.1rem solid #ffc7ff;
         }
     }
 
     span {
         position: absolute;
-        top: -3.7rem;
-        left: 1.3rem;
+        top: -0.4rem;
+        left: 0;
 
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 500;
-        font-size: 1.4rem;
+        font-size: 1.7rem;
         line-height: 1.7rem;
         color: #B4B4B4;
+
+        transition: all 0.2s ease-in-out;
+    }
+
+    .error {
+        font-size: 1.1rem;
+        color: red;
+        position: absolute;
+        top: 3rem;
+        left: 0.5rem;
     }
 }

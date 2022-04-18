@@ -1,25 +1,31 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import { Login } from "./components/layout/Login";
+import { Main } from "./components/layout/Main/Main";
+import {
+  Login,
+  RegistrationOne,
+  RegistrationTwo,
+  RegistrationThree,
+} from "./components/layout/LoginAndRegistration";
+import { Erorr } from "./components/Erorr";
+import RegistrationConfirm from "./components/layout/LoginAndRegistration/RegistrationConfirm";
 
-// import Registration1 from "./components/Registration1";
-// import Registration2 from "./components/Registration2";
-// import Registration3 from "./components/Registration3";
-// import Test from "./components/archive/layout/TestComponent/Test";
+//
+
+//
 
 function App() {
   return (
     <div className="app">
-      <Login />
-      {/* <Routes> */}
-      {/* <Route path="/login" index element={<Login />} /> */}
-      {/* <Route path="/" element={<Login />} />
-              <Route path="registration1" element={<Registration1 />} />
-              <Route path="registration2" element={<Registration2 />} />
-              <Route path="registration3" element={<Registration3 />} />
-              <Route path="test" element={<Test />} />
-              <Route path="*" element={<h1> Не найдено </h1>} /> */}{" "}
-      {/* </Routes> */}
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registrationone" element={<RegistrationOne />} />
+        <Route path="/registrationtwo" element={<RegistrationTwo />} />
+        <Route path="/registrationthree" element={<RegistrationThree />} />
+        <Route path="/registrationconfirm" element={<RegistrationConfirm />} />
+        <Route path="*" element={<Erorr />} />
+      </Routes>
     </div>
   );
 }
