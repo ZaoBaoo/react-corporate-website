@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/react-corporate-website/static/css/main.dca72c61.css",
-    "main.js": "/react-corporate-website/static/js/main.155f1201.js",
+    "main.css": "/react-corporate-website/static/css/main.e8a563bc.css",
+    "main.js": "/react-corporate-website/static/js/main.44f84f82.js",
+    "static/js/445.7e1219e9.chunk.js": "/react-corporate-website/static/js/445.7e1219e9.chunk.js",
+    "static/js/134.255c1216.chunk.js": "/react-corporate-website/static/js/134.255c1216.chunk.js",
     "static/media/Montserrat-Bold.woff": "/react-corporate-website/static/media/Montserrat-Bold.3155f256200b7d559607.woff",
     "static/media/Montserrat-SemiBold.woff": "/react-corporate-website/static/media/Montserrat-SemiBold.411a4d1469b75e0248ff.woff",
     "static/media/Montserrat-Medium.woff": "/react-corporate-website/static/media/Montserrat-Medium.2451e96bc4c62e5ad1d0.woff",
@@ -16,11 +18,13 @@
     "static/media/MaterialIcons-Regular.woff2": "/react-corporate-website/static/media/MaterialIcons-Regular.cff684e59ffb052d72cb.woff2",
     "static/media/preloader.svg": "/react-corporate-website/static/media/preloader.78edba5974bdddd8766d2e16598c38d9.svg",
     "index.html": "/react-corporate-website/index.html",
-    "main.dca72c61.css.map": "/react-corporate-website/static/css/main.dca72c61.css.map",
-    "main.155f1201.js.map": "/react-corporate-website/static/js/main.155f1201.js.map"
+    "main.e8a563bc.css.map": "/react-corporate-website/static/css/main.e8a563bc.css.map",
+    "main.44f84f82.js.map": "/react-corporate-website/static/js/main.44f84f82.js.map",
+    "445.7e1219e9.chunk.js.map": "/react-corporate-website/static/js/445.7e1219e9.chunk.js.map",
+    "134.255c1216.chunk.js.map": "/react-corporate-website/static/js/134.255c1216.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dca72c61.css",
-    "static/js/main.155f1201.js"
+    "static/css/main.e8a563bc.css",
+    "static/js/main.44f84f82.js"
   ]
 }
