@@ -9,13 +9,28 @@
     position: fixed;
     top: -10rem;
     left: 0;
+
+    @media (max-width: 480px) {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: static;
+        img {
+            display: block;
+            margin: 18rem auto 0;
+        }
+    }
+
+    @media (max-height: 700px) {
+        top: 0;
+    }
+
 }
 
 .modal {
-    // width: 40rem;
     width: 42rem;
 
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--modal-bg-color);
     box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
 
@@ -24,4 +39,21 @@
     align-items: center;
 
     padding: 4rem;
+
+    a {
+        // При нажатии на моб. элемент не выделяется синим
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        border-radius: 0;
+        height: 100%;
+        padding-top: 14rem;
+        box-shadow: none;
+    }
+
+    @media (max-height: 560px) {
+        padding-top: 7rem;
+    }
 }

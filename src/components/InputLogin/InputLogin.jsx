@@ -1,5 +1,6 @@
 import cn from "classnames";
 import styles from "./InputLogin.module.scss";
+// import "material-design-icons/iconfont/material-icons.css";
 
 const InputLogin = ({
   label,
@@ -28,18 +29,18 @@ const InputLogin = ({
             {errors?.[name].message || "Заполнено неправильно"}
           </div>
         )}
-
-        {iconEyeToggle && (
-          <i
-            className="material-icons"
-            onClick={() => {
-              iconEyeToggle((state) => !state);
-            }}
-          >
-            remove_red_eye
-          </i>
-        )}
       </label>
+
+      {iconEyeToggle && (
+        <i
+          className="material-icons"
+          onClick={() => {
+            iconEyeToggle((state) => !state);
+          }}
+        >
+          remove_red_eye
+        </i>
+      )}
     </div>
   );
 };

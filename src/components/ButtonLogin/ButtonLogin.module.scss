@@ -7,6 +7,9 @@
 
     cursor: pointer;
     font-family: 'Montserrat';
+
+    // При нажатии на моб. элемент не выделяется синим
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btnLogin {

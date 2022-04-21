@@ -8,12 +8,17 @@ const initialRegistrationState = {
   phoneNumber: "",
   password: "",
   passwordConfirm: "",
+  isLoading: true,
 };
 
 const registrationSlice = createSlice({
   name: "registration",
   initialState: initialRegistrationState,
   reducers: {
+    // Loading
+    stopLoading(state) {
+      state.isLoading = false;
+    },
     //  Step 1
     setFirstName(state, action) {
       state.firstName = action.payload;
