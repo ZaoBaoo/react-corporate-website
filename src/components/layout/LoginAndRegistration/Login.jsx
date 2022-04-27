@@ -1,27 +1,70 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { fetchLoginThunk } from "../../../store/thunk/loginThunk";
 
+// Action
+import { loginAction } from "../../../store/login-slice/login-slice";
+
+// Components
 import { ModalAndWrapper } from "./ModalAndWrapper";
 import { InputLogin } from "../../InputLogin";
 import { TitleLogin } from "../../TitleLogin";
 import { TextLogin } from "../../TextLogin";
 import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
 
+// Hook-form
 import { emailVal, passVal } from "./Validate";
 
 const Login = () => {
+  // Selector store
+  const { errorLogin } = useSelector((state) => state.login);
+
+  // dispatch
+  const dispatch = useDispatch();
+
   // HOOK USE FORM
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setError,
+    clearErrors,
   } = useForm({ mode: "onSubmit" });
 
-  // (f)
+  // (f) АВТОРИЗАЦИЯ
   const handlerLogin = (data) => {
-    const { emailLogin, passwordLogin } = data;
-    // АВТОРИЗАЦИЯ
+    // Удаление ошибки из store(если она есть)
+    dispatch(loginAction.clearErrorHandler());
+    // Пытаемся войти
+    dispatch(fetchLoginThunk(data));
   };
 
+  // (e) Удаление ошибки при перерендере
+  useEffect(() => {
+    dispatch(loginAction.clearErrorHandler());
+  }, [dispatch]);
+
+  // (e) Установка ошибки если она появляется в STORE
+  useEffect(() => {
+    // Проверяем наличие свойст у объекта с ошибками
+    const isError = Object.keys(errorLogin).length;
+
+    if (isError) {
+      setError(errorLogin.name, { message: errorLogin.message });
+    }
+  }, [errorLogin, setError]);
+
+  // (e) Удаление ошибки если она отсутвствует в STORE
+  useEffect(() => {
+    // Проверяем наличие свойст у объекта с ошибками
+    const isError = Object.keys(errorLogin).length;
+
+    if (!isError) {
+      clearErrors();
+    }
+  }, [errorLogin, clearErrors]);
+  //
   return (
     <form action="" onSubmit={handleSubmit(handlerLogin)}>
       <ModalAndWrapper>

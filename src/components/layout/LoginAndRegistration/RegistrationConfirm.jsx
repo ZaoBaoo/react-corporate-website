@@ -1,45 +1,75 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+// Store
+import { useSelector, useDispatch } from "react-redux";
+import { registrationAction } from "../../../store/registration-slice/registration-slice";
+import { registrationForEmailThunk } from "../../../store/thunk/registrationThunk";
+
+// Components
 import { TitleLogin } from "../../TitleLogin";
 import { ModalAndWrapper } from "./ModalAndWrapper";
 import { InputLogin } from "../../InputLogin";
-
-// Store
-import { useSelector } from "react-redux";
-import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
 import { TextLogin } from "../../TextLogin";
+import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
 
 const RegistrationConfirm = () => {
-  // Selectrot
-  const { firstName, lastName, email, phoneNumber } = useSelector(
-    (state) => state.registration
-  );
+  //
+  const toMain = useNavigate();
 
-  // TEST
+  // Dispatch
+  const dispatch = useDispatch();
+
+  // Selector registration
+  const {
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    password,
+    errorRegistration,
+  } = useSelector((state) => state.registration);
+
+  // Selector login
+
+  const { isLoggedIn } = useSelector((state) => state.login);
+
+  // (f) Регистрация
+  const signUpHandler = (e) => {
+    e.preventDefault();
+    const dataForSignUp = { email, password };
+    //
+    dispatch(registrationForEmailThunk(dataForSignUp));
+  };
+
+  // Удаление ошибки
   useEffect(() => {
-    console.log("last");
-  });
+    return () => dispatch(registrationAction.clearError());
+  }, [dispatch]);
+
+  // При удачном входе в аккаун перенаправляет в <Main />
+  useEffect(() => {
+    if (isLoggedIn) {
+      toMain("/");
+    }
+  }, [isLoggedIn, toMain]);
+
   return (
-    <form action="">
+    <form action="" onSubmit={signUpHandler}>
       <ModalAndWrapper>
-        <TitleLogin title="Потвердите данные" />
+        <TitleLogin title="Подтвердите данные" />
         <InputLogin mode="inputLine" label={firstName} type="text" disabled />
         <InputLogin mode="inputLine" label={lastName} type="text" disabled />
         <InputLogin mode="inputLine" label={email} type="text" disabled />
         <InputLogin mode="inputLine" label={phoneNumber} type="text" disabled />
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          {/* <Link to="/registrationtwo">
-            <ButtonLogin mode="registration" name="НАЗАД" />
-          </Link> */}
-        </div>
+        {errorRegistration ? <p>{errorRegistration}</p> : null}
         <TextLogin linkedText="изменить данные" linkedTo="/registrationthree" />
         <br />
-        <ButtonLogin mode="registration" name="ЗАРЕГИСТРИРОВАТЬСЯ" />
+        <ButtonLogin
+          mode="registration"
+          name="ЗАРЕГИСТРИРОВАТЬСЯ"
+          type="submit"
+        />
       </ModalAndWrapper>
     </form>
   );

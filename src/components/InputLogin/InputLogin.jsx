@@ -1,6 +1,5 @@
 import cn from "classnames";
 import styles from "./InputLogin.module.scss";
-// import "material-design-icons/iconfont/material-icons.css";
 
 const InputLogin = ({
   label,
@@ -8,9 +7,9 @@ const InputLogin = ({
   mode,
   register = Function.prototype,
   name,
-  errors,
   val,
   iconEyeToggle,
+  errors,
   ...props
 }) => {
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -66,11 +66,6 @@ const RegistrationThree = () => {
     saveFormInput(data);
     next("/registrationconfirm");
   };
-
-  // TEST
-  useEffect(() => {
-    console.log(3);
-  });
 
   return (
     <form action="" onSubmit={handleSubmit(nextStep)}>

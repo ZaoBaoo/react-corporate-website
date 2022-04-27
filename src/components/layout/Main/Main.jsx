@@ -1,10 +1,12 @@
-import { Navigate } from "react-router-dom";
-
-const lock = false;
+import { auth } from "../../../firebase";
 
 const Main = () => {
-  // return <div>MAIN</div>;
-  return <>{lock ? <h1>Main</h1> : <Navigate to="/login" />}</>;
+  return (
+    <>
+      <h1>MAIN</h1>
+      <button onClick={() => auth.signOut()}>LogOut</button>
+    </>
+  );
 };
 
 export { Main };

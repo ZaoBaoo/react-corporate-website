@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -59,11 +58,6 @@ const RegistrationTwo = () => {
 
     return phoneNumber.formatInternational();
   };
-
-  // TEST
-  useEffect(() => {
-    console.log(2);
-  });
 
   return (
     <form action="" onSubmit={handleSubmit(nextStep)}>

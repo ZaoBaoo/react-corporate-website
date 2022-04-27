@@ -9,6 +9,7 @@ const initialRegistrationState = {
   password: "",
   passwordConfirm: "",
   isLoading: true,
+  errorRegistration: "",
 };
 
 const registrationSlice = createSlice({
@@ -51,6 +52,14 @@ const registrationSlice = createSlice({
       state.phoneNumber = "";
       state.password = "";
       state.passwordConfirm = "";
+    },
+
+    // Error
+    setError(state, action) {
+      state.errorRegistration = action.payload;
+    },
+    clearError(state) {
+      state.errorRegistration = "";
     },
   },
 });

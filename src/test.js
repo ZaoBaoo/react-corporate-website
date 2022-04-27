@@ -1,9 +1,12 @@
-const superHardFoo = (a, b) => {
-  if (a > b) {
-    return a;
-  } else {
-    return b;
-  }
-};
-
-console.log(superHardFoo(100, 500));
+const user = {
+    "lastname": "данил",
+    "firstname": "пупкин",
+    "age": 24,
+    "email": "tampox@gmail.com",
+    "phone": "+7 777 528 96 50",
+    "placeOfWork": {
+        "department": "маркетинг",
+        "position": "СММ специалист",
+        "status": "active"
+    }
+}

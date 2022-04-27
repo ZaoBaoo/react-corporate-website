@@ -40,6 +40,18 @@
 
     padding: 4rem;
 
+    position: relative;
+
+    
+    // Errors /registrationconfirm
+    p {
+        position: absolute;
+        bottom: 13.3rem;
+
+        color: red;
+        font-size: 1.2rem;
+    }
+
     a {
         // При нажатии на моб. элемент не выделяется синим
         -webkit-tap-highlight-color: transparent;
@@ -47,8 +59,8 @@
 
     @media (max-width: 480px) {
         width: 100%;
-        border-radius: 0;
         height: 100%;
+        border-radius: 0;
         padding-top: 14rem;
         box-shadow: none;
     }
