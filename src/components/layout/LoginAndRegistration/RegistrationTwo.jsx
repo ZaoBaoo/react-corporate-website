@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 
 // Store
 import { useDispatch, useSelector } from "react-redux";
-import { registrationAction } from "../../../store/registration-slice/registration-slice";
-
+import { registrationAction } from "../../../store/slice/registrationSlice";
 // Parse Number
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 

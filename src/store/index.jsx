@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Slice import
-import { registrationSlice } from "./registration-slice/registration-slice";
-import { loginSlice } from "./login-slice/login-slice";
-import { dbSlice } from "./db-slice/db-slice";
+import { registrationSlice } from "./slice/registrationSlice";
+import { loginSlice } from "./slice/loginSlice";
+import { userDBSlice } from "./slice/userDBSlice";
 
 const store = configureStore({
   reducer: {
     registration: registrationSlice.reducer,
     login: loginSlice.reducer,
-    db: dbSlice.reducer,
+    userDB: userDBSlice.reducer,
   },
 });
 

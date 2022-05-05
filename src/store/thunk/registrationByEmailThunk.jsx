@@ -1,18 +1,19 @@
-import { registrationAction } from "../registration-slice/registration-slice";
-import { loginAction } from "../login-slice/login-slice";
+import { registrationAction } from "../slice/registrationSlice";
+import { loginAction } from "../slice/loginSlice";
 
 // Firebase
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 
-const registrationForEmailThunk = (payload) => {
+const registrationByEmailThunk = (payload) => {
   return async (dispatch) => {
     const { email, password } = payload;
 
     try {
       //
-      await createUserWithEmailAndPassword(auth, email, password);
+      const res = await createUserWithEmailAndPassword(auth, email, password);
       //
+      console.log(res.user);
     } catch (error) {
       console.log(error.message);
       let messageError;
@@ -31,4 +32,4 @@ const registrationForEmailThunk = (payload) => {
   };
 };
 
-export { registrationForEmailThunk };
+export { registrationByEmailThunk };

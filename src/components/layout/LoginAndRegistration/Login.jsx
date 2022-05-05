@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { fetchLoginThunk } from "../../../store/thunk/loginThunk";
+import { loginByEmailThunk } from "../../../store/thunk/loginByEmailThunk";
 
 // Action
-import { loginAction } from "../../../store/login-slice/login-slice";
+import { loginAction } from "../../../store/slice/loginSlice";
 
 // Components
 import { ModalAndWrapper } from "./ModalAndWrapper";
@@ -37,7 +37,7 @@ const Login = () => {
     // Удаление ошибки из store(если она есть)
     dispatch(loginAction.clearErrorHandler());
     // Пытаемся войти
-    dispatch(fetchLoginThunk(data));
+    dispatch(loginByEmailThunk(data));
   };
 
   // (e) Удаление ошибки при перерендере

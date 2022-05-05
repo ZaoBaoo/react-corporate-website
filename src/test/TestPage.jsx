@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // firebase
 import { auth } from "../firebase";
 import { db } from "../firebase";
-import { get, ref, set } from "firebase/database";
+import { get, ref, set, onValue } from "firebase/database";
 import {
   signInWithEmailAndPassword,
   updatePassword,
@@ -16,6 +16,7 @@ import styles from "./TestPage.module.scss";
 const TestPage = () => {
   // State
   const [data, setData] = useState({ email: "", password: "" });
+  const [observable, setObservable] = useState({});
 
   // (f) setState
   const dataHandler = (e) => {
@@ -84,6 +85,19 @@ const TestPage = () => {
     });
   }, []);
 
+  // (e) TEST TEST TEST
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        onValue(ref(db, `/users/${auth.currentUser.uid}`), (snapshot) => {
+          const data = snapshot.val();
+          console.log(`snapshot: `, data);
+          setObservable(data);
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className={styles.mainTest}>
       <form action="/" onSubmit={handlerLogin}>
@@ -116,6 +130,16 @@ const TestPage = () => {
           <button onClick={readDBHandler} type="button">
             Get DB
           </button>
+        </div>
+
+        <div>
+          <textarea
+            readOnly
+            value={JSON.stringify(observable)}
+            cols="35"
+            rows="7"
+            style={{ resize: "none" }}
+          />
         </div>
       </form>
     </div>

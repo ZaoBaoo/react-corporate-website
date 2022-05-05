@@ -4,8 +4,7 @@ import { useForm } from "react-hook-form";
 
 // Store
 import { useDispatch, useSelector } from "react-redux";
-import { registrationAction } from "../../../store/registration-slice/registration-slice";
-
+import { registrationAction } from "../../../store/slice/registrationSlice";
 // Yup
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";

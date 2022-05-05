@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Preloader } from "../../Preloader/";
 
 // STORE
-import { registrationAction } from "../../../store/registration-slice/registration-slice";
+import { registrationAction } from "../../../store/slice/registrationSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // SCSS

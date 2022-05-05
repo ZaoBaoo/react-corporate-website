@@ -1,10 +1,13 @@
-import { loginAction } from "../login-slice/login-slice";
+import { loginAction } from "../slice/loginSlice";
+
+// test
+import { getDBUserThunk } from "./getUserDBThunk";
 
 // Firebase
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-const fetchLoginThunk = (payload) => {
+const loginByEmailThunk = (payload) => {
   return async (dispatch) => {
     //  Data for payload
     const { emailLogin, passwordLogin } = payload;
@@ -12,6 +15,8 @@ const fetchLoginThunk = (payload) => {
     try {
       //
       await signInWithEmailAndPassword(auth, emailLogin, passwordLogin);
+
+      dispatch(getDBUserThunk(auth.currentUser));
       //
     } catch (error) {
       let messageError;
@@ -65,4 +70,4 @@ const fetchLoginThunk = (payload) => {
   };
 };
 
-export { fetchLoginThunk };
+export { loginByEmailThunk };

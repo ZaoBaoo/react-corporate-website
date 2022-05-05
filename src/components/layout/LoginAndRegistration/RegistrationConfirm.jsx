@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 // Store
 import { useSelector, useDispatch } from "react-redux";
-import { registrationAction } from "../../../store/registration-slice/registration-slice";
-import { registrationForEmailThunk } from "../../../store/thunk/registrationThunk";
+import { registrationAction } from "../../../store/slice/registrationSlice";
+import { registrationByEmailThunk } from "../../../store/thunk/registrationByEmailThunk";
 
 // Components
 import { TitleLogin } from "../../TitleLogin";
@@ -14,9 +13,6 @@ import { TextLogin } from "../../TextLogin";
 import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
 
 const RegistrationConfirm = () => {
-  //
-  const toMain = useNavigate();
-
   // Dispatch
   const dispatch = useDispatch();
 
@@ -30,29 +26,18 @@ const RegistrationConfirm = () => {
     errorRegistration,
   } = useSelector((state) => state.registration);
 
-  // Selector login
-
-  const { isLoggedIn } = useSelector((state) => state.login);
-
   // (f) Регистрация
   const signUpHandler = (e) => {
     e.preventDefault();
-    const dataForSignUp = { email, password };
+    const dataForSignUp = { firstName, lastName, email, phoneNumber, password };
     //
-    dispatch(registrationForEmailThunk(dataForSignUp));
+    dispatch(registrationByEmailThunk(dataForSignUp));
   };
 
   // Удаление ошибки
   useEffect(() => {
     return () => dispatch(registrationAction.clearError());
   }, [dispatch]);
-
-  // При удачном входе в аккаун перенаправляет в <Main />
-  useEffect(() => {
-    if (isLoggedIn) {
-      toMain("/");
-    }
-  }, [isLoggedIn, toMain]);
 
   return (
     <form action="" onSubmit={signUpHandler}>
@@ -75,4 +60,4 @@ const RegistrationConfirm = () => {
   );
 };
 
-export default RegistrationConfirm;
+export { RegistrationConfirm };

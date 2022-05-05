@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { checkLocalStorageAuth } from "../../tool-function";
+
 const initialLoginState = {
-  isLoggedIn: false,
+  isLoggedIn: checkLocalStorageAuth("authData"),
   errorLogin: {},
 };
 
@@ -11,8 +13,8 @@ const loginSlice = createSlice({
   reducers: {
     // Login
     loginHandler(state, action) {
-      state.isLoggedIn = action.payload;
-      localStorage.setItem("isLoggedIn", action.payload);
+      state.isLoggedIn = action.payload.isLoggedIn;
+      localStorage.setItem("authData", JSON.stringify(action.payload));
     },
     // Error
     setError(state, action) {

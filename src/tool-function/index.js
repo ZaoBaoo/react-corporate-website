@@ -10,6 +10,7 @@ const checkSessionTimeOut = (user) => {
     if (res > timeOut) {
         console.log("Токен умер. Вы вышли!");
         auth.signOut();
+        localStorage.setItem('isLoggedIn', false)
     } else {
         console.log(
             `Осталось [ ${(
@@ -20,6 +21,15 @@ const checkSessionTimeOut = (user) => {
     }
 }
 
+const checkLocalStorageAuth = (key) => {
+    const value = JSON.parse(localStorage.getItem(key));
+    if (value?.isLoggedIn) {
+        return JSON.parse(value.isLoggedIn);
+    }
+    return false;
+}
+
 export {
-    checkSessionTimeOut
+    checkSessionTimeOut,
+    checkLocalStorageAuth
 }
