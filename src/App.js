@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Store
-import { loginAction } from "./store/slice/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // Firebase
@@ -20,30 +19,35 @@ import {
   RegistrationThree,
   RegistrationConfirm,
 } from "./components/layout/LoginAndRegistration";
+
+// Error
 import { Erorr } from "./components/Erorr";
 
 // TEST
 import { TestPage } from "./test/TestPage";
+import { TestPageTwo } from "./test/TestPageTwo";
 
-//
+// TEST SUPER
+import { useUserDB } from "./hooks/useUserDB";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 //
 
 function App() {
+  useUserDB();
+  useLocalStorage();
   //
   const { isLoggedIn } = useSelector((state) => state.login);
-  //
-  const dispatch = useDispatch();
-  //
+
+  // (e) Проверка. Прошел ли час с момента входа
+  // Если прошло больше часа, произойдет выход
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         checkSessionTimeOut(user);
       }
-      // if (!user) {
-      //   dispatch(loginAction.loginHandler({ isLoggedIn: false }));
-      // }
     });
-  }, [dispatch]);
+  }, []);
+
   //
   return (
     <div className="app">
@@ -81,6 +85,7 @@ function App() {
           }
         />
         <Route path="/testPage" element={<TestPage />} />
+        <Route path="/testPageTwo" element={<TestPageTwo />} />
         <Route path="*" element={<Erorr />} />
       </Routes>
     </div>

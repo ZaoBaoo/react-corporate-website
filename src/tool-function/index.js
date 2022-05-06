@@ -21,15 +21,6 @@ const checkSessionTimeOut = (user) => {
     }
 }
 
-const checkLocalStorageAuth = (key) => {
-    const value = JSON.parse(localStorage.getItem(key));
-    if (value?.isLoggedIn) {
-        return JSON.parse(value.isLoggedIn);
-    }
-    return false;
-}
-
 export {
     checkSessionTimeOut,
-    checkLocalStorageAuth
 }

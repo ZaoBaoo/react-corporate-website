@@ -1,8 +1,5 @@
 import { loginAction } from "../slice/loginSlice";
 
-// test
-import { getDBUserThunk } from "./getUserDBThunk";
-
 // Firebase
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -16,7 +13,7 @@ const loginByEmailThunk = (payload) => {
       //
       await signInWithEmailAndPassword(auth, emailLogin, passwordLogin);
 
-      dispatch(getDBUserThunk(auth.currentUser));
+      dispatch(loginAction.loginHandler(true));
       //
     } catch (error) {
       let messageError;

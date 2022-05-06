@@ -1,1 +1,3 @@
-localStorage.setItem('isLoggedIn', true)
+console.log(!{
+    A: 2
+});
