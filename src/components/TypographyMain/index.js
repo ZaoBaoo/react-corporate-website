@@ -1,0 +1,1 @@
+export { TypographyMain } from "./TypographyMain";
