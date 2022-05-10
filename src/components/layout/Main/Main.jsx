@@ -1,3 +1,4 @@
+import { useState } from "react";
 // Firebase
 import { auth } from "../../../firebase";
 
@@ -11,6 +12,11 @@ import { userDBAction } from "../../../store/slice/userDBSlice";
 
 // Components
 import { Header } from "../../Header";
+import { Push } from "../../Push";
+import { Container } from "../../Container";
+
+// Style
+import styles from "./Main.module.scss";
 
 const Main = () => {
   const { userData } = useSelector((state) => state.userDB);
@@ -18,6 +24,7 @@ const Main = () => {
   return (
     <>
       <Header />
+      <Push />
     </>
   );
 };

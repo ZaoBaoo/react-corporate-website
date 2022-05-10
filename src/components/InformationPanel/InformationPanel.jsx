@@ -1,5 +1,6 @@
 // Components
 import { TypographyMain } from "../TypographyMain";
+import { ButtonLogin } from "../ButtonLogin";
 
 // Module css
 import styles from "./InformationPanel.module.scss";
@@ -45,7 +46,7 @@ const InformationPanel = () => {
           </TypographyMain>
         </div>
       </div>
-      <button onClick={LogOut}>Выход</button>
+      <ButtonLogin mode="logout" name="ВЫХОД" type="button" onClick={LogOut} />
     </div>
   );
 };

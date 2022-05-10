@@ -75,3 +75,21 @@
         z-index: 2;
     }
 }
+
+.btnLogout {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+
+    width: 10.2rem;
+    height: 3.4rem;
+
+    background: #535D81;
+    box-shadow: -0.4rem 0.4rem 0.6rem rgba(0, 0, 0, 0.15), 0.4rem -0.4rem 0.6rem rgba(0, 0, 0, 0.15);
+}

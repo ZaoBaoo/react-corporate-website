@@ -11,7 +11,7 @@ import { ModalAndWrapper } from "./ModalAndWrapper";
 import { InputLogin } from "../../InputLogin";
 import { TitleLogin } from "../../TitleLogin";
 import { TextLogin } from "../../TextLogin";
-import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
+import { ButtonLogin } from "../../ButtonLogin";
 
 // Hook-form
 import { emailVal, passVal } from "./Validate";
