@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-corporate-website/static/css/main.9291c45f.css",
+    "main.css": "/react-corporate-website/static/css/main.7ff912b4.css",
     "main.js": "/react-corporate-website/static/js/main.f0ffcf3c.js",
     "static/media/Montserrat-Bold.woff": "/react-corporate-website/static/media/Montserrat-Bold.3155f256200b7d559607.woff",
     "static/media/Montserrat-SemiBold.woff": "/react-corporate-website/static/media/Montserrat-SemiBold.411a4d1469b75e0248ff.woff",
@@ -18,11 +18,11 @@
     "static/media/searchBarsIcon.svg": "/react-corporate-website/static/media/searchBarsIcon.63137bf1fe64b55597da.svg",
     "index.html": "/react-corporate-website/index.html",
     "static/media/searchCloseIcon.svg": "/react-corporate-website/static/media/searchCloseIcon.b82baacf6014b50a72f8.svg",
-    "main.9291c45f.css.map": "/react-corporate-website/static/css/main.9291c45f.css.map",
+    "main.7ff912b4.css.map": "/react-corporate-website/static/css/main.7ff912b4.css.map",
     "main.f0ffcf3c.js.map": "/react-corporate-website/static/js/main.f0ffcf3c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9291c45f.css",
+    "static/css/main.7ff912b4.css",
     "static/js/main.f0ffcf3c.js"
   ]
 }
