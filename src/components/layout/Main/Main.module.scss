@@ -1,0 +1,91 @@
+.generalContent {
+    display: flex;
+
+    .leftSide {
+        height: 100vh;
+        background: #444d73;
+
+        flex-grow: 1;
+
+        .personBox {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem;
+
+            border-bottom: 1px solid #C1C1C1;
+            cursor: pointer;
+            
+            &:hover {
+                background: #525b86;
+            }
+
+            .infoUser {
+                display: flex;
+
+                .imgUser {
+                    height: 5rem;
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                        image-rendering: -webkit-optimize-contrast;
+                    }
+                }
+
+                .infoName {
+                    padding-left: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 0.4rem;
+
+                    span {
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 1.4rem;
+                        line-height: 1.7rem;
+
+                        letter-spacing: 0.05rem;
+
+                        color: #FFFFFF;
+                    }
+
+                    .infoDepartment {
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 1.0rem;
+                        line-height: 1.2rem;
+                        letter-spacing: 0.05em;
+                        
+                        color: #A7B2DC;
+                    }
+                }
+            }
+
+            .messageUserIcon {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            flex-grow: 1.5;
+        }
+
+        @media (max-width: 1000px) {
+            flex-grow: 2;
+        }
+    }
+
+    .rightSide {
+        height: 100vh;
+        background: #ffd3b673;
+
+        flex-grow: 7;
+
+        @media (max-width: 1000px) {
+            flex-grow: 3;
+        }
+    }
+}
