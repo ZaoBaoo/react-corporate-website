@@ -18,7 +18,7 @@ const Search = () => {
 
           <dir className={styles.groupRadio}>
             <input type="radio" name="search" id="lastname" />
-            <label htmlFor="lastname">Фамиилия</label>
+            <label htmlFor="lastname">Фамилия</label>
           </dir>
 
           <dir className={styles.groupRadio}>

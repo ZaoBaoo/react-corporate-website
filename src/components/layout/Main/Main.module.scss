@@ -1,91 +1,117 @@
-.generalContent {
-    display: flex;
+.generalBlock {
+    // 
+    // 
+    //
 
-    .leftSide {
-        height: 100vh;
-        background: #444d73;
-
-        flex-grow: 1;
-
-        .personBox {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.5rem;
-
-            border-bottom: 1px solid #C1C1C1;
-            cursor: pointer;
-            
-            &:hover {
-                background: #525b86;
+    .generalContent {
+        display: flex;
+        height: calc(100vh - 22rem);
+        // 
+        // 
+        .leftSide {           
+            background: #444d73;   
+            flex-grow: 1;
+            overflow-y: scroll; 
+            &::-webkit-scrollbar {
+                width: 7px;
+                background: #444d73;
             }
-
-            .infoUser {
+    
+            &::-webkit-scrollbar-thumb {
+                // border-radius: 10px;
+                background: #a2a7bb;
+            }
+    
+            &::-webkit-scrollbar-track {
+                // border-radius: 10px;
+                background: var(--main-bg-color);
+            }
+    
+            .personBox {
                 display: flex;
-
-                .imgUser {
-                    height: 5rem;
-                    img {
-                        object-fit: cover;
-                        width: 100%;
-                        height: 100%;
-                        image-rendering: -webkit-optimize-contrast;
-                    }
-                }
-
-                .infoName {
-                    padding-left: 1rem;
+                justify-content: flex-start;
+                border-bottom: 1px solid #C1C1C1;
+                cursor: pointer;
+                  
+                .infoUser {
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 0.4rem;
-
-                    span {
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 1.4rem;
-                        line-height: 1.7rem;
-
-                        letter-spacing: 0.05rem;
-
-                        color: #FFFFFF;
+                    padding: 1.5rem;
+                    &:hover {
+                        background: #525b86;
                     }
-
-                    .infoDepartment {
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 1.0rem;
-                        line-height: 1.2rem;
-                        letter-spacing: 0.05em;
-                        
-                        color: #A7B2DC;
+                    flex-grow: 10;
+    
+                    .imgUser {
+                        height: 5rem;
+                        img {
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                            image-rendering: -webkit-optimize-contrast;
+                        }
+                    }
+    
+                    .infoName {
+                        padding-left: 1rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: 0.4rem;
+    
+                        span {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 1.4rem;
+                            line-height: 1.7rem;
+    
+                            letter-spacing: 0.05rem;
+    
+                            color: #FFFFFF;
+                        }
+    
+                        .infoDepartment {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 1.0rem;
+                            line-height: 1.2rem;
+                            letter-spacing: 0.05em;
+                            
+                            color: #A7B2DC;
+                        }
+                    }
+                }
+    
+                .messageUserIcon {
+                    padding: 3rem;
+    
+                    &:hover {
+                        background: #525b86;
                     }
                 }
             }
-
-            .messageUserIcon {
-                padding: 0 1rem;
+    
+            @media (max-width: 1000px) {
+                flex-grow: 1.5;
+            }
+    
+            @media (max-width: 1000px) {
+                flex-grow: 2;
             }
         }
-
-        @media (max-width: 1000px) {
-            flex-grow: 1.5;
-        }
-
-        @media (max-width: 1000px) {
-            flex-grow: 2;
-        }
-    }
-
-    .rightSide {
-        height: 100vh;
-        background: #ffd3b673;
-
-        flex-grow: 7;
-
-        @media (max-width: 1000px) {
-            flex-grow: 3;
+    
+        .rightSide {
+            background: #ffd3b673;
+    
+            flex-grow: 7;
+    
+            @media (max-width: 1000px) {
+                flex-grow: 3;
+            }
+            @media (max-width: 425px) {
+                display: none;
+            }
         }
     }
 }

@@ -1,10 +1,12 @@
 .pushBlock {
-    height: 6rem;
-    background-color: #646d8d;
-    .pushContent {
-        display: flex;
-        align-items: center;
+    .pushGeneral {
         height: 6rem;
-        padding: 0 2.5rem;
+        background-color: #646d8d;
+        .pushContent {
+            display: flex;
+            align-items: center;
+            height: 6rem;
+            padding: 0 2.5rem;
+        }
     }
 }

@@ -8,7 +8,9 @@ const Push = ({ children }) => {
   return (
     <div className={styles.pushBlock}>
       <Container>
-        <div className={styles.pushContent}>{children}</div>
+        <div className={styles.pushGeneral}>
+          <div className={styles.pushContent}>{children}</div>
+        </div>
       </Container>
     </div>
   );
