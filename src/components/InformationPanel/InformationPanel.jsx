@@ -46,7 +46,7 @@ const InformationPanel = () => {
           </TypographyMain>
         </div>
       </div>
-      <ButtonLogin mode="logout" name="ВЫХОД" type="button" onClick={LogOut} />
+      <ButtonLogin mode="logout" type="button" onClick={LogOut} />
     </div>
   );
 };
