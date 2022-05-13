@@ -41,6 +41,8 @@ const useUserDB = () => {
         lastName,
         email,
         phoneNumber,
+        department: "",
+        position: "",
       });
     }
   }, [dispatch, isDataReceived]);

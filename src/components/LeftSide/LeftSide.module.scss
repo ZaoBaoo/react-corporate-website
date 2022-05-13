@@ -1,0 +1,27 @@
+.leftSide {           
+    background: #444d73;   
+    flex-grow: 1;
+    overflow-y: scroll; 
+    &::-webkit-scrollbar {
+        width: 7px;
+        background: #444d73;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        // border-radius: 10px;
+        background: #a2a7bb;
+    }
+
+    &::-webkit-scrollbar-track {
+        // border-radius: 10px;
+        background: var(--main-bg-color);
+    }
+
+    @media (max-width: 1000px) {
+        flex-grow: 1.5;
+    }
+
+    @media (max-width: 1000px) {
+        flex-grow: 2;
+    }
+}

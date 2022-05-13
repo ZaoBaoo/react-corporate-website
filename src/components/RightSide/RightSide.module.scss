@@ -1,0 +1,12 @@
+.rightSide {
+    background: #ffd3b673;
+
+    flex-grow: 7;
+
+    @media (max-width: 1000px) {
+        flex-grow: 3;
+    }
+    @media (max-width: 425px) {
+        display: none;
+    }
+}

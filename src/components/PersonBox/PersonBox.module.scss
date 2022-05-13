@@ -1,0 +1,64 @@
+.personBox {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #C1C1C1;
+    cursor: pointer;
+      
+    .infoUser {
+        display: flex;
+        padding: 1.5rem;
+        &:hover {
+            background: #525b86;
+        }
+        flex-grow: 10;
+
+        .imgUser {
+            height: 5rem;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        .infoName {
+            padding-left: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.4rem;
+
+            span {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 1.4rem;
+                line-height: 1.7rem;
+
+                letter-spacing: 0.05rem;
+
+                color: #FFFFFF;
+            }
+
+            .infoDepartment {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 1.0rem;
+                line-height: 1.2rem;
+                letter-spacing: 0.05em;
+                
+                color: #A7B2DC;
+            }
+        }
+    }
+
+    .messageUserIcon {
+        padding: 3rem;
+
+        &:hover {
+            background: #525b86;
+        }
+    }
+}

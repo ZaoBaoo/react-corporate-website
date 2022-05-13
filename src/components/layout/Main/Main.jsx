@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Firebase
 import { auth } from "../../../firebase";
 
@@ -15,257 +15,29 @@ import { Header } from "../../Header";
 import { Push } from "../../Push";
 import { Search } from "../../Search";
 import { Container } from "../../Container";
+import { General } from "../../General";
+import { LeftSide } from "../../LeftSide";
+import { RightSide } from "../../RightSide";
 
-import miniUserIcon from "../../../img/miniUserIcon.png";
-import messageIcon from "../../../img/messageIcon.svg";
 // Style
 import styles from "./Main.module.scss";
 
+// Hook
+import { useMobile } from "../../../hooks/useMobile";
+
 const Main = () => {
+  useMobile();
   return (
     <>
       <Header />
       <Push>
         <Search />
       </Push>
+      <General>
+        <LeftSide />
+        <RightSide />
+      </General>
 
-      <div className={styles.generalBlock}>
-        <Container>
-          <div className={styles.generalContent}>
-            <div className={styles.leftSide}>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-              <div className={styles.personBox}>
-                <div className={styles.infoUser}>
-                  <div className={styles.imgUser}>
-                    <img src={miniUserIcon} alt="" />
-                  </div>
-                  <div className={styles.infoName}>
-                    <span>Марина Путина</span>
-                    <div className={styles.infoDepartment}>СММ специалист</div>
-                  </div>
-                </div>
-                <img
-                  src={messageIcon}
-                  alt=""
-                  className={styles.messageUserIcon}
-                />
-              </div>
-            </div>
-            <div className={styles.rightSide}></div>
-          </div>
-        </Container>
-      </div>
       <Push />
     </>
   );
