@@ -1,10 +1,14 @@
 .generalBlock {
-    // 
-    // 
-    //
+    position: relative;
 
     .generalContent {
         display: flex;
         height: calc(100vh - 22rem);
+
+        @media (max-width: 425px) {
+            display: block;
+            // height: calc(100vh - 22rem);
+        }
     }
+
 }

@@ -1,3 +1,7 @@
+// Store
+import { useDispatch } from "react-redux";
+import { modalUserAction } from "../../store/slice/modalUser";
+
 // Components
 import miniUserIcon from "../../img/miniUserIcon.png";
 import messageIcon from "../../img/messageIcon.svg";
@@ -5,10 +9,16 @@ import messageIcon from "../../img/messageIcon.svg";
 // Style
 import styles from "./PersonBox.module.scss";
 
-const PersonBox = ({ firstName, lastName, department }) => {
+const PersonBox = ({ firstName, lastName, department, uid }) => {
+  const dispatch = useDispatch();
+
+  const showUserInModal = () => {
+    dispatch(modalUserAction.setShowModal(true));
+    dispatch(modalUserAction.setUidForShow(uid));
+  };
   return (
     <div className={styles.personBox}>
-      <div className={styles.infoUser}>
+      <div className={styles.infoUser} onClick={showUserInModal}>
         <div className={styles.imgUser}>
           <img src={miniUserIcon} alt="" />
         </div>

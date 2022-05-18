@@ -1,3 +1,3 @@
-console.log(!{
-    A: 2
-});
+const obj = null
+
+console.log(obj['danil']);

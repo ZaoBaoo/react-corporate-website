@@ -112,15 +112,11 @@ body {
 /* MEDIA */
 /* ============== */
 
+
 @media (max-width: 480px) {
   html {
     font-size: 9px;
   }
-
-  
-  /* body {
-    background: var(--modal-bg-color);
-  } */
 }
 
 /* ============== */

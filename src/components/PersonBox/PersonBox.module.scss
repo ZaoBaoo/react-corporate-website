@@ -6,14 +6,17 @@
       
     .infoUser {
         display: flex;
-        padding: 1.5rem;
+        padding: 1.5rem 0 1.5rem 1.5rem;
         &:hover {
             background: #525b86;
         }
         flex-grow: 10;
 
+        // max-width: 30rem;
+
         .imgUser {
             height: 5rem;
+
             img {
                 object-fit: cover;
                 width: 100%;
@@ -29,6 +32,8 @@
             justify-content: center;
             gap: 0.4rem;
 
+            max-width: 15rem;
+            overflow-x: hidden;
             span {
                 font-family: 'Montserrat';
                 font-style: normal;

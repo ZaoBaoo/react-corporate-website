@@ -14,7 +14,6 @@ import { userDBAction } from "../../../store/slice/userDBSlice";
 import { Header } from "../../Header";
 import { Push } from "../../Push";
 import { Search } from "../../Search";
-import { Container } from "../../Container";
 import { General } from "../../General";
 import { LeftSide } from "../../LeftSide";
 import { RightSide } from "../../RightSide";
@@ -27,6 +26,9 @@ import { useMobile } from "../../../hooks/useMobile";
 
 const Main = () => {
   useMobile();
+
+  const { isMobileSize } = useSelector((state) => state.mobile);
+  const { showModal } = useSelector((state) => state.modalUser);
   return (
     <>
       <Header />
@@ -35,6 +37,7 @@ const Main = () => {
       </Push>
       <General>
         <LeftSide />
+        {/* {(isMobileSize && !showModal) || <RightSide />} */}
         <RightSide />
       </General>
 

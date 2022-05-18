@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import { loginAction } from "../../store/slice/loginSlice";
 import { userDBAction } from "../../store/slice/userDBSlice";
+import { registrationAction } from "../../store/slice/registrationSlice";
 
 // Test icon
 import userIcon from "../../img/userIcon.png";
@@ -24,6 +25,7 @@ const InformationPanel = () => {
     auth.signOut();
     dispatch(loginAction.loginHandler(false));
     dispatch(userDBAction.clearUserData());
+    dispatch(registrationAction.clearDataStore());
     console.log("Вышли");
   };
 

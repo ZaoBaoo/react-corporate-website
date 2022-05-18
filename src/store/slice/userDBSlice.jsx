@@ -1,21 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserDBState = {
-  isDataReceived: false,
-  userData: {},
+  // isDataReceived: false,
+  userData: null,
+  usersData: null,
 };
 
 const userDBSlice = createSlice({
   name: "userDB",
   initialState: initialUserDBState,
   reducers: {
+    setUsersData(state, action) {
+      state.usersData = action.payload;
+    },
     setUserData(state, action) {
-      state.isDataReceived = true;
       state.userData = action.payload;
     },
     clearUserData(state) {
-      state.isDataReceived = false;
-      state.userData = {};
+      state.usersData = null;
+      state.userData = null;
     },
   },
 });

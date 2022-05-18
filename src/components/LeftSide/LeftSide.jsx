@@ -1,35 +1,37 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 // Firebase
-import { db } from "../../firebase";
-import { onValue, ref } from "firebase/database";
+import { auth } from "../../firebase";
+// import { db } from "../../firebase";
+// import { onValue, ref } from "firebase/database";
+
+// Store
+import { useSelector } from "react-redux";
+// import { userDBAction } from "../../store/slice/userDBSlice";
 
 // Components
 import styles from "./LeftSide.module.scss";
 import { PersonBox } from "../PersonBox";
 
 const LeftSide = () => {
-  const [users, setUsers] = useState(null);
-
-  useEffect(() => {
-    const referens = ref(db, `/users`);
-    onValue(referens, (snapshot) => {
-      setUsers(snapshot.val());
-    });
-  }, []);
+  const { usersData } = useSelector((state) => state.userDB);
+  // const [users, setUsers] = useState(null);
 
   return (
     <>
       <div className={styles.leftSide}>
-        {users &&
-          Object.entries(users).map((user) => (
-            <PersonBox
-              key={user[0]}
-              firstName={user[1].firstName}
-              lastName={user[1].lastName}
-              department={user[1].department}
-            />
-          ))}
+        {usersData &&
+          Object.values(usersData)
+            .filter((user) => user.uid !== auth.currentUser.uid)
+            .map((user) => (
+              <PersonBox
+                key={user.uid}
+                firstName={user.firstName}
+                lastName={user.lastName}
+                department={user.department}
+                uid={user.uid}
+              />
+            ))}
       </div>
     </>
   );

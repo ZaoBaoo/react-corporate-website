@@ -1,12 +1,20 @@
 .rightSide {
-    background: #ffd3b673;
+    padding: 2rem;
 
-    flex-grow: 7;
+    .userPanel {
+        background: #a9aec0;
+        border-radius: 1.5rem;
+        height: 100%;
 
-    @media (max-width: 1000px) {
-        flex-grow: 3;
+        padding: 5rem;
     }
+    flex-grow: 7;
     @media (max-width: 425px) {
-        display: none;
+        // display: none;
+        position: absolute;
+        top: -16rem;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
     }
 }
