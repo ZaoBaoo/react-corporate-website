@@ -37,8 +37,7 @@ const Main = () => {
       </Push>
       <General>
         <LeftSide />
-        {/* {(isMobileSize && !showModal) || <RightSide />} */}
-        <RightSide />
+        {(isMobileSize && !showModal) || <RightSide />}
       </General>
 
       <Push />

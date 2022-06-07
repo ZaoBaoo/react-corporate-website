@@ -1,18 +1,26 @@
 import styles from "./TypographyMain.module.scss";
 import cn from "classnames";
 
-const TypographyMain = ({ children, size, color }) => {
+const TypographyMain = ({ text, second, size }) => {
   return (
-    <span
-      className={cn(styles.text, {
-        [styles.s]: size === "s",
-        [styles.l]: size === "l",
-        [styles.light]: color === "light",
-        [styles.dark]: color === "dark",
-      })}
-    >
-      {children}
-    </span>
+    <div className={styles.wrapper}>
+      <span
+        className={cn({
+          [styles.lText]: size === "l",
+          [styles.mText]: size === "m",
+        })}
+      >
+        {text}
+      </span>
+      <span
+        className={cn({
+          [styles.lSecond]: size === "l",
+          [styles.mSecond]: size === "m",
+        })}
+      >
+        {second}
+      </span>
+    </div>
   );
 };
 

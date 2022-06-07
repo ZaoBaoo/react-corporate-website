@@ -100,4 +100,11 @@
         background-position: right 0.6rem top 0.9rem ;
         border-radius: 0.5rem;
     }
+
+    @media (max-width: 395px) {
+        width: 4rem;
+        height: 4rem;
+        background-position: right 0.6rem top 0.9rem ;
+        border-radius: 0.5rem;
+    }
 }

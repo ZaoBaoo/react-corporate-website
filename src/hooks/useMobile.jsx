@@ -11,12 +11,12 @@ const useMobile = () => {
     const handleResize = () => {
       // Если разрешение меньше 425
       // Переключаем isMobileSize на true
-      if (!isMobileSize && window.innerWidth < 425) {
+      if (!isMobileSize && window.innerWidth < 800) {
         dispatch(mobileAction.toggle(true));
       }
       // Если разрешение больше 425
       // Переключаем isMobileSize на false
-      if (isMobileSize && window.innerWidth > 425) {
+      if (isMobileSize && window.innerWidth > 800) {
         dispatch(mobileAction.toggle(false));
       }
     };

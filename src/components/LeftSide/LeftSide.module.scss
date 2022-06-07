@@ -1,9 +1,12 @@
 .leftSide {           
     background: #444d73;   
     flex-grow: 1;
+
     overflow-y: scroll;
 
-    max-width: 37rem;
+    // max-width: 37rem;
+    min-width: 31rem;
+
     &::-webkit-scrollbar {
         width: 7px;
         background: #444d73;
@@ -16,7 +19,8 @@
 
     &::-webkit-scrollbar-track {
         // border-radius: 10px;
-        background: var(--main-bg-color);
+        // background: var(--main-bg-color);
+        background: #444d73;
     }
 
     @media (max-width: 1000px) {
@@ -25,7 +29,7 @@
         max-width: 31rem;
     }
 
-    @media (max-width: 425px) {
+    @media (max-width: 800px) {
         max-width: none;
         height: calc(100vh - 22rem);
     }

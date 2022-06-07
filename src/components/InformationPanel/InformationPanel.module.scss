@@ -1,14 +1,18 @@
 .boxWrapper {
-    // background: #9b9b9b;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 3.5rem 0;
+
+    @media (max-width: 395px) {
+        padding: 1.5rem 2rem 0;
+    }
 }
 
 .boxInformation {
     display: flex;
     justify-content: space-between;
+    gap: 2rem;
 }
 
 .icon {

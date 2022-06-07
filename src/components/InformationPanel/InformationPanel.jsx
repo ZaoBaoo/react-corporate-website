@@ -1,6 +1,7 @@
 // Components
 import { TypographyMain } from "../TypographyMain";
 import { ButtonLogin } from "../ButtonLogin";
+import { UserPhoto } from "../UserPhoto";
 
 // Module css
 import styles from "./InformationPanel.module.scss";
@@ -20,6 +21,7 @@ import userIcon from "../../img/userIcon.png";
 const InformationPanel = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userDB);
+
   // (f)
   const LogOut = () => {
     auth.signOut();
@@ -32,21 +34,14 @@ const InformationPanel = () => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.boxInformation}>
-        <img src={userIcon} alt="" className={styles.icon} />
-        <div className={styles.text}>
-          <div>
-            <TypographyMain size="s" color="light">
-              {userData?.firstName}
-            </TypographyMain>
-            &nbsp;&nbsp;
-            <TypographyMain size="s" color="light">
-              {userData?.lastName}
-            </TypographyMain>
-          </div>
-          <TypographyMain size="l" color="dark">
-            {userData?.email}
-          </TypographyMain>
-        </div>
+        <UserPhoto size="m" src={userIcon} />
+        {userData && (
+          <TypographyMain
+            text={`${userData?.firstName} ${userData?.lastName}`}
+            second={userData?.email}
+            size="m"
+          />
+        )}
       </div>
       <ButtonLogin mode="logout" type="button" onClick={LogOut} />
     </div>

@@ -1,15 +1,211 @@
 .rightSide {
     padding: 2rem;
+    flex-grow: 7;
 
     .userPanel {
         background: #a9aec0;
         border-radius: 1.5rem;
+        max-width: 83rem;
         height: 100%;
 
         padding: 5rem;
+
+        position: relative;
+
+        .btnEdit {
+            position: absolute;
+            top: 4rem;
+            right: 4rem;
+
+            width: 4.5rem;
+            height: 4.5rem;
+
+            background-image: url('../../img/editIcon.svg');
+            background-color: initial;
+            background-repeat: no-repeat;
+            background-size: 67%;
+            background-position: right 0.6rem top 0.7rem;
+
+            filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.5));
+
+            border: 0.19rem solid #656565;
+            border-radius: 1rem;
+
+            cursor: pointer;
+
+            transition: background-color 0.25s ease-in-out;
+
+            &:hover {
+                background-color: #a9aec0;
+            }
+
+            @media (max-width: 800px) {
+                left: 4rem;
+            }
+        }
+
+        .btnClose {
+            position: absolute;
+            top: 4rem;
+            right: 4rem;
+
+            width: 5rem;
+            height: 5rem;
+            border-radius: 1rem;
+
+            border: none;
+            background-image: url('../../img/pageCloseIcon.svg');
+            background-repeat: no-repeat;
+            background-size: 65%;
+            background-position: right 0.85rem top 0.85rem;
+            background-color: inherit;
+
+            cursor: pointer;
+
+            transition: background-color 0.25s ease-in-out;
+
+            &:hover {
+                background-color: #9ea2ad;
+            }
+
+            @media (min-width: 800px) {
+                display: none;
+            }
+        }
+
+        
+        @media (max-width: 1100px) {
+            overflow-y: scroll;
+            border-radius: 1.5rem 0 0 1.5rem;
+
+            &::-webkit-scrollbar {
+                width: 7px;
+                background: #444d73;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                border-radius: 0 1.5rem 1.5rem 0;
+                background: #a2a7bb;
+            }
+            
+            &::-webkit-scrollbar-track {
+                // border-radius: 10px;
+                background: var(--main-bg-color);
+            }
+        }
+
+        hr {
+            border: none;
+
+            background: #888888;
+            height: 2px;
+            margin-top: 4rem;
+        }
+
+        .headerUserPanel {
+            display: flex;
+
+            .wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding-top: 0.5rem;
+                justify-content: center;
+
+                padding-left: 3.5rem;
+                
+                @media (max-width: 1100px) {
+                    padding-left: 0;
+                    padding-top: 3rem;
+                }
+            }
+
+            @media (max-width: 1100px) {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .mainUserPanel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            padding: 4rem 0 0 0;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+
+                padding: 2rem 2rem;
+
+                span {
+                    align-self: flex-start;
+
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 1.4rem;
+                    
+                    letter-spacing: 0.05em;                   
+                    color: #555555;
+                    
+                    padding-bottom: 0.5rem;
+                }
+
+                input {
+                    // min-width: 30rem;
+                    width: 100%;
+                    height: 5rem;
+
+                    background: #b2b6c6;
+                    border: none;
+                    outline: none;
+
+                    padding-left: 1rem;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 1.3rem;
+                    text-align: center;
+                    
+                    letter-spacing: 0.05em;
+                    
+                    color: #FFFFFF;
+
+                    &:hover {
+                        border: none;
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 1.3rem;
+                        text-align: center;
+                        
+                        letter-spacing: 0.05em;
+                        
+                        color: #FFFFFF;
+                    }
+                }
+
+                @media (max-width: 1100px) {
+                    width: 100%;
+                }
+            }
+        }
+
+        @media (max-width: 1000px) {
+            padding: 2.5rem;
+        }
     }
-    flex-grow: 7;
-    @media (max-width: 425px) {
+    
+
+    @media (max-width: 800px) {
         // display: none;
         position: absolute;
         top: -16rem;
