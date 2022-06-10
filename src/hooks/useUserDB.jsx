@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // Store
 import { useDispatch, useSelector } from "react-redux";
 import { userDBAction } from "../store/slice/userDBSlice";
+import { modalUserAction } from "../store/slice/modalUser";
 
 // Firebase
 import { ref, onValue, set } from "firebase/database";
@@ -15,6 +16,10 @@ const useUserDB = () => {
   const { firstName, lastName, email, phoneNumber } = useSelector(
     (state) => state.registration
   );
+  // ТЕСТ
+  const { userForShow } = useSelector((state) => state.modalUser);
+
+  console.log(userForShow);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -54,43 +59,19 @@ const useUserDB = () => {
         return;
       }
 
+      // Для отображения в header
       dispatch(userDBAction.setUserData(user));
 
+      // ТЕСТ
+      // Для отображения в modal (right side)
+      if (userForShow === "") {
+        dispatch(modalUserAction.setUserForShow(user));
+      }
+
+      // Список пользователей
       dispatch(userDBAction.setUsersData(response));
     }
   }, [response]);
 };
 
 export { useUserDB };
-
-// useEffect(() => {
-//   auth.onAuthStateChanged((user) => {
-//     if (user) {
-//       onValue(ref(db, `/users/${auth.currentUser.uid}`), (snapshot) => {
-//         const data = snapshot.val();
-
-//         console.log(`Отправили запрос в базу данных, получили ${data}`);
-//         // отправляем запрос в базу данных
-//         // Запишем полученные данные в Store
-//         // Если пользователь регистрируется, то с базы мы получем null
-//         // И создадим его в базе данных
-//         dispatch(userDBAction.setUserData(data));
-//       });
-//     }
-//   });
-// }, [dispatch]);
-
-// useEffect(() => {
-//   console.log(userData);
-//   if (isDataReceived && !userData) {
-//     console.log("Создание user DB");
-//     set(ref(db, `/users/${auth.currentUser.uid}`), {
-//       firstName,
-//       lastName,
-//       email,
-//       phoneNumber,
-//       department: "",
-//       position: "",
-//     });
-//   }
-// }, [dispatch, isDataReceived]);

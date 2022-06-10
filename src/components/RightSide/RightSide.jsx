@@ -9,13 +9,13 @@ import photo from "../../img/userIcon.png";
 import { InputPage } from "../InputPage";
 
 const RightSide = () => {
-  const { userData } = useSelector((state) => state.userDB);
+  const { userForShow } = useSelector((state) => state.modalUser);
 
   const dispatch = useDispatch();
 
   const closeModal = () => {
     dispatch(modalUserAction.setShowModal(false));
-    dispatch(modalUserAction.setUidForShow(""));
+    dispatch(modalUserAction.setUserForShow(""));
   };
 
   return (
@@ -26,20 +26,20 @@ const RightSide = () => {
           <button className={styles.btnClose} onClick={closeModal} />
           <div className={styles.headerUserPanel}>
             <UserPhoto size="l" src={photo} />
-            {userData && (
+            {userForShow && (
               <div className={styles.wrapper}>
                 <InputPage
                   disabled={true}
                   mode="withoutLabel"
                   color="light"
-                  text={`${userData?.firstName} ${userData?.lastName}`}
+                  text={`${userForShow?.firstName} ${userForShow?.lastName}`}
                 />
 
                 <InputPage
                   disabled={true}
                   mode="withoutLabel"
                   color="dark"
-                  text={userData.email}
+                  text={userForShow.email}
                 />
               </div>
             )}
@@ -55,19 +55,19 @@ const RightSide = () => {
             <InputPage
               disabled={true}
               mode="withLabel"
-              text="Макетинг"
+              text={userForShow.phoneNumber}
               label="Телефон:"
             />
             <InputPage
               disabled={true}
               mode="withLabel"
-              text="Макетинг"
+              text="-"
               label="Должность:"
             />
             <InputPage
               disabled={true}
               mode="withLabel"
-              text="Макетинг"
+              text="-"
               label="Статус работника:"
             />
           </div>

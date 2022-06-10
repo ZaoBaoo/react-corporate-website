@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialModalState = {
   showModal: false,
-  uidForShow: "",
+  userForShow: "",
 };
 
 const modalUserSlice = createSlice({
@@ -12,8 +12,8 @@ const modalUserSlice = createSlice({
     setShowModal(state, actions) {
       state.showModal = actions.payload;
     },
-    setUidForShow(state, actions) {
-      state.uidForShow = actions.payload;
+    setUserForShow(state, actions) {
+      state.userForShow = actions.payload;
     },
   },
 });
