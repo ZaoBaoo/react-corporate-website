@@ -35,5 +35,3 @@ const InputPage = ({ mode, color, text, label, ...props }) => {
 };
 
 export { InputPage };
-
-// `${userData.firstName} ${userData.lastName}`

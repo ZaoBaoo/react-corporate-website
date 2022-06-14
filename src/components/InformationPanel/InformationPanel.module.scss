@@ -13,6 +13,13 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+
+    transition: background 0.2s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+        background: #616c97;
+    }
 }
 
 .icon {

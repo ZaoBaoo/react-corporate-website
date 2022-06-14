@@ -8,6 +8,7 @@ import styles from "./InformationPanel.module.scss";
 
 // Store
 import { useDispatch, useSelector } from "react-redux";
+import { modalUserAction } from "../../store/slice/modalUser";
 
 // Firebase
 import { auth } from "../../firebase";
@@ -21,6 +22,17 @@ import userIcon from "../../img/userIcon.png";
 const InformationPanel = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userDB);
+  const { isMobileSize } = useSelector((state) => state.mobile);
+
+  // (f)
+  const showUserInModal = () => {
+    if (isMobileSize) {
+      dispatch(modalUserAction.setShowModal(true));
+      dispatch(modalUserAction.setUID(userData.uid));
+      return;
+    }
+    dispatch(modalUserAction.setUID(userData.uid));
+  };
 
   // (f)
   const LogOut = () => {
@@ -33,7 +45,7 @@ const InformationPanel = () => {
 
   return (
     <div className={styles.boxWrapper}>
-      <div className={styles.boxInformation}>
+      <div className={styles.boxInformation} onClick={showUserInModal}>
         <UserPhoto size="m" src={userIcon} />
         {userData && (
           <TypographyMain
