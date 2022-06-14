@@ -19,8 +19,6 @@ const useUserDB = () => {
   // ТЕСТ
   const { userForShow } = useSelector((state) => state.modalUser);
 
-  console.log(userForShow);
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {

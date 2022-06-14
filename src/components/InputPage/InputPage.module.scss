@@ -18,6 +18,29 @@
         outline: none;
     }
 
+    &:disabled {
+        animation: none;
+    }
+
+    animation: pulse3 1.5s linear infinite;
+        
+    @keyframes pulse3 {
+        0% {
+            background: #b2b6c6;
+            text-decoration: underline;
+        }
+        
+        50% {
+            background: #a8b8ac;
+            text-decoration: none;
+        }
+        
+        100% {
+            text-decoration: underline;
+            background: #b2b6c6;
+        }
+    }
+
     @media (max-width: 1100px) {
         text-align: center;
     }
@@ -43,6 +66,29 @@
     &:hover {
         border: none;
         outline: none;
+    }
+
+    &:disabled {
+        animation: none;
+    }
+
+    animation: pulse3 1.5s linear infinite;
+        
+    @keyframes pulse3 {
+        0% {
+            background: #b2b6c6;
+            text-decoration: underline;
+        }
+        
+        50% {
+            background: #a8b8ac;
+            text-decoration: none;
+        }
+        
+        100% {
+            text-decoration: underline;
+            background: #b2b6c6;
+        }
     }
 
     @media (max-width: 1100px) {
@@ -78,11 +124,12 @@
     }
 
     input {
-        // min-width: 30rem;
         width: 100%;
         height: 5rem;
 
         background: #b2b6c6;
+        text-decoration: underline;
+
         border: none;
         outline: none;
 
@@ -92,27 +139,60 @@
         font-weight: 500;
         font-size: 1.3rem;
         text-align: center;
+        font-style: italic;
         
         letter-spacing: 0.05em;
         
-        color: #FFFFFF;
+        color: #ffffff;
 
+        
+        text-decoration: underline;
+        
+        &:disabled {
+            background: #b2b6c6;
+            animation: none;
+            border: none;
+            font-style: normal;
+            outline: none;
+            text-decoration: none;
+        }
+        
         &:hover {
             border: none;
             outline: none;
         }
+        
+        animation: pulse3 1.5s linear infinite;
 
-        &::placeholder {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.3rem;
-            text-align: center;
+        @keyframes pulse3 {
+            0% {
+                background: #b2b6c6;
+                text-decoration: underline;
+            }
             
-            letter-spacing: 0.05em;
+            50% {
+                background: #a8b8ac;
+                text-decoration: none;
+            }
             
-            color: #FFFFFF;
+            100% {
+                text-decoration: underline;
+                background: #b2b6c6;
+            }
         }
+
+
+        // &::placeholder {
+        //     font-family: 'Montserrat';
+        //     font-style: normal;
+        //     font-weight: 500;
+        //     font-size: 1.3rem;
+        //     text-align: center;
+            
+        //     letter-spacing: 0.05em;
+            
+        //     color: #FFFFFF;
+        // }
     }
 
     @media (max-width: 1100px) {

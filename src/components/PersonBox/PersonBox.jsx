@@ -12,16 +12,16 @@ import styles from "./PersonBox.module.scss";
 
 const PersonBox = ({ firstName, lastName, department, uid }) => {
   const { isMobileSize } = useSelector((state) => state.mobile);
-  const { usersData } = useSelector((state) => state.userDB);
+
   const dispatch = useDispatch();
 
   const showUserInModal = () => {
     if (isMobileSize) {
       dispatch(modalUserAction.setShowModal(true));
-      dispatch(modalUserAction.setUserForShow(usersData[uid]));
+      dispatch(modalUserAction.setUID(uid));
       return;
     }
-    dispatch(modalUserAction.setUserForShow(usersData[uid]));
+    dispatch(modalUserAction.setUID(uid));
   };
 
   return (

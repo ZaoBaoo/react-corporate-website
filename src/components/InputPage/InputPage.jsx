@@ -13,7 +13,7 @@ const InputPage = ({ mode, color, text, label, ...props }) => {
             [styles.name]: color === "light",
             [styles.email]: color === "dark",
           })}
-          maxLength="18"
+          maxLength="25"
           type="text"
         />
       )}
@@ -21,7 +21,13 @@ const InputPage = ({ mode, color, text, label, ...props }) => {
       {mode === "withLabel" && (
         <label className={styles.label}>
           <span>{label}</span>
-          <input {...props} value={text} maxLength="18" type="text" />
+          <input
+            {...props}
+            value={text}
+            // maxLength="25"
+            maxLength="18"
+            type="text"
+          />
         </label>
       )}
     </>

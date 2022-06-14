@@ -27,7 +27,7 @@ import { Erorr } from "./components/Erorr";
 import { TestPage } from "./test/TestPage";
 import { TestPageTwo } from "./test/TestPageTwo";
 
-// TEST SUPER
+// HOOKs
 import { useUserDB } from "./hooks/useUserDB";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 //
@@ -37,6 +37,7 @@ function App() {
   useLocalStorage();
   //
   const { isLoggedIn } = useSelector((state) => state.login);
+  const { editDisabled } = useSelector((state) => state.modalUser);
 
   // (e) Проверка. Прошел ли час с момента входа
   // Если прошло больше часа, произойдет выход
@@ -50,7 +51,10 @@ function App() {
 
   //
   return (
-    <div className="app">
+    <div
+      className="app"
+      style={editDisabled ? null : { pointerEvents: "none" }}
+    >
       <Routes>
         <Route
           path="/"
