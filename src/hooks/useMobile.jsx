@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 // store
 import { useSelector, useDispatch } from "react-redux";
@@ -11,12 +11,12 @@ const useMobile = () => {
     const handleResize = () => {
       // Если разрешение меньше 425
       // Переключаем isMobileSize на true
-      if (!isMobileSize && window.innerWidth < 800) {
+      if (!isMobileSize && window.innerWidth < 814) {
         dispatch(mobileAction.toggle(true));
       }
       // Если разрешение больше 425
       // Переключаем isMobileSize на false
-      if (isMobileSize && window.innerWidth > 800) {
+      if (isMobileSize && window.innerWidth > 814) {
         dispatch(mobileAction.toggle(false));
       }
     };

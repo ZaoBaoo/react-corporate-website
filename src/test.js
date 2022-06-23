@@ -1,3 +1,11 @@
-const obj = null
+Array.prototype.sayLog = () => {
+    console.log(this);
+}
 
-console.log(obj['danil']);
+const arr = ["a", "b", "c"];
+
+arr.sayLog()
+
+
+
+console.log(Array.forEach);

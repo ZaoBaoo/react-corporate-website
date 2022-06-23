@@ -97,6 +97,7 @@ a {
 
 body {
   background: var(--main-bg-color);
+  /* background: white; */
 }
 
 /* ============== */

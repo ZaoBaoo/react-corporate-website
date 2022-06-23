@@ -4,8 +4,8 @@
 
     overflow-y: scroll;
 
-    // max-width: 37rem;
-    min-width: 31rem;
+    min-width: 37rem;
+    // min-width: 31rem;
 
     &::-webkit-scrollbar {
         width: 7px;
@@ -29,7 +29,11 @@
         max-width: 31rem;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 870px) {
+        min-width: 33rem;
+    }
+
+    @media (max-width: 814px) {
         max-width: none;
         height: calc(100vh - 22rem);
     }

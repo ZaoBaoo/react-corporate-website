@@ -7,6 +7,8 @@
 }
 
 .name {
+    max-width: 40rem;
+
     position: relative;
 
     font-family: 'Montserrat';
@@ -51,16 +53,19 @@
         }
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1140px) {
         text-align: center;
     }
 
     @media (max-width: 1000px) {
         font-size: 2.67rem;
     }
+
 }
 
 .email {
+    max-width: 40rem;
+    
     position: relative;
 
     font-family: 'Montserrat';
@@ -103,7 +108,7 @@
         }
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1140px) {
         text-align: center;
     }
 
@@ -120,6 +125,8 @@
     width: 50%;
 
     padding: 2rem 2rem;
+
+    
 
     span {
         align-self: flex-start;
@@ -159,6 +166,8 @@
 
         
         text-decoration: underline;
+
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
         
         &:disabled {
             background: #b2b6c6;
@@ -207,7 +216,7 @@
         // }
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1140px) {
         width: 100%;
     }
 }

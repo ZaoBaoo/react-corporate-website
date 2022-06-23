@@ -1,9 +1,10 @@
 .rightSide {
-    padding: 2rem;
+    padding: 2rem 0 2rem 2rem;
     flex-grow: 7;
 
     .userPanel {
-        background: #a9aec0;
+        // Orininal
+        background: rgb(169,174,192);
         border-radius: 1.5rem;
         max-width: 83rem;
         height: 100%;
@@ -11,6 +12,8 @@
         padding: 5rem;
 
         position: relative;
+
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
 
         .btnEdit,
         .btnSaveEdit {
@@ -99,7 +102,7 @@
         }
 
         
-        @media (max-width: 1100px) {
+        @media (max-width: 1140px) {
             overflow-y: scroll;
             border-radius: 1.5rem 0 0 1.5rem;
 
@@ -116,6 +119,19 @@
             &::-webkit-scrollbar-track {
                 // border-radius: 10px;
                 background: var(--main-bg-color);
+            }
+        }
+
+        @media (max-width: 813px) {
+            background: linear-gradient(45deg, rgba(169,174,192,1) 0%, rgba(83,93,129,1) 100%) 0;
+
+            &::-webkit-scrollbar-track {
+                background: #a2a7bb;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 1.5rem;
+                background: #86888d;
             }
         }
 
@@ -138,14 +154,16 @@
                 justify-content: center;
 
                 padding-left: 3.5rem;
+
                 
-                @media (max-width: 1100px) {
+                
+                @media (max-width: 1140px) {
                     padding-left: 0;
                     padding-top: 3rem;
                 }
             }
 
-            @media (max-width: 1100px) {
+            @media (max-width: 1140px) {
                 flex-direction: column;
                 align-items: center;
             }
@@ -172,11 +190,15 @@
         @media (max-width: 1000px) {
             padding: 2.5rem;
         }
+
+        @media (max-width: 813px) {
+            border-radius: 0;
+        }
     }
     
 
-    @media (max-width: 800px) {
-        // display: none;
+    @media (max-width: 813px) {
+        padding: 0;
         position: absolute;
         top: -16rem;
         left: 0;

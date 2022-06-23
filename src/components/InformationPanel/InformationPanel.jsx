@@ -17,7 +17,7 @@ import { userDBAction } from "../../store/slice/userDBSlice";
 import { registrationAction } from "../../store/slice/registrationSlice";
 
 // Test icon
-import userIcon from "../../img/userIcon.png";
+import userIcon from "../../img/userIcon.svg";
 
 const InformationPanel = () => {
   const dispatch = useDispatch();

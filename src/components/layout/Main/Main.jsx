@@ -17,6 +17,7 @@ import { Search } from "../../Search";
 import { General } from "../../General";
 import { LeftSide } from "../../LeftSide";
 import { RightSide } from "../../RightSide";
+import { Spinner } from "../../Spinner";
 
 // Style
 import styles from "./Main.module.scss";
@@ -27,20 +28,30 @@ import { useMobile } from "../../../hooks/useMobile";
 const Main = () => {
   useMobile();
 
+  const { usersData } = useSelector((state) => state.userDB);
   const { isMobileSize } = useSelector((state) => state.mobile);
   const { showModal } = useSelector((state) => state.modalUser);
+
+  // Пока приложение не получило usersData (список пользователей из БД)
+  // Будет крутиться спиннер
   return (
     <>
-      <Header />
-      <Push>
-        <Search />
-      </Push>
-      <General>
-        <LeftSide />
-        {(isMobileSize && !showModal) || <RightSide />}
-      </General>
+      {!usersData ? (
+        <Spinner />
+      ) : (
+        <>
+          <Header />
+          <Push>
+            <Search />
+          </Push>
+          <General>
+            <LeftSide />
+            {(isMobileSize && !showModal) || <RightSide />}
+          </General>
 
-      <Push />
+          <Push />
+        </>
+      )}
     </>
   );
 };

@@ -1,4 +1,8 @@
 .header {
     height: 10rem;
     background: var(--main-bg-color);
+
+    @media(max-width: 370px) {
+        height: 8rem;
+    }
 }

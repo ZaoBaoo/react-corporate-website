@@ -7,7 +7,8 @@ import { modalUserAction } from "../../store/slice/modalUser";
 // Components
 import { UserPhoto } from "../UserPhoto";
 import styles from "./RightSide.module.scss";
-import photo from "../../img/userIcon.png";
+// import photo from "../../img/userIcon.png";
+import photo from "../../img/userIcon.svg";
 import { InputPage } from "../InputPage";
 
 // Thunk

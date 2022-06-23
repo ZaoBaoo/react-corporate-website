@@ -1,53 +1,11 @@
 .search {
         position: relative;
-
-        input[type="search"] {
-            width: 32rem;
-            height: 3.5rem;
-            background: #a2a7bb;
-            border-radius: 20px;
-
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.3rem;
-            line-height: 1.6rem;
-            letter-spacing: 0.05em;
-
-            padding: 0 1.5rem 0 5.2rem;
-            
-            color: #FFFFFF;
-
-            
-            outline: none;
-            border: 0.1rem solid #c0c5d8;
-            text-decoration: none;
-            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-
-            // Close
-            &::-webkit-search-cancel-button {
-                -webkit-appearance: none;
-                
-                width: 2rem;
-                height: 2rem;
-                background: url('../../img/searchCloseIcon.svg');
-            }
-
-            @media (max-width: 870px) {
-                width: 28rem;
-            }
-
-            @media (max-width: 425px) {
-                width: 100%;
-            }
-        }
-
-        .dropBtn {
+        .dropdown {
             position: absolute;
             top: 0.9rem;
             left: 1.7rem;
 
-            input {
+            .dropBtn {
                 display: inline-block;
                 width: 2.4rem;
                 height: 1.8rem;
@@ -55,54 +13,45 @@
                 background-repeat: no-repeat;
                 cursor: pointer;
 
-                border: none;
+                border: 0.1rem dotted #12121200;
 
                 &:focus {
                     outline: none;
-                    border: none;
+                    border: 0.1rem solid #a7bbdf;
+                }
+
+                &:focus + .dropdownContent {
+                    display: block;
                 }
                 
             }
-        }
 
-        .dropDown {
-            z-index: 100;
-            
-            position: absolute;
-            top: 3.39rem;
-            left: 1.3rem;
 
-            width: calc(100% - 2.5rem);
+            .dropdownContent {
+                display: none;
+                position: absolute;
+                top: 2.52rem;
+                left: 0;
+                background: #767d96;
+                width: 28rem;
+                z-index: 1;
 
-            overflow: hidden;
-            
-            border: 0.1rem solid #c0c5d8;
+                border: 0.1rem solid #c6d1ff;
+                border-radius: 0 0 0.5rem 0.5rem;
+                overflow: hidden;
 
-            // background: #a2a7bb;
-
-            background: rgba(162, 167, 187, 0.3);
-            backdrop-filter: blur(10px);
-            .dropDownHeader {
-                width: 100%;
-                height: 2.5rem;
-
-                color: #ffffff;
-                font-size: 1.2rem;
-                font-weight: 600;
-                
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                // background: #9396a5;
-
-                background: rgba(147, 150, 165, 0.1);
-                backdrop-filter: blur(5px);
-            }
+                .textContent {
+                    text-align: center;
+                    background: #9396a5;
+                    color: #4d4d4d;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    padding: 0.5rem;
+                }
 
                 .groupRadio {
                     padding: 0.7rem 0.7rem;
-                    border-top: 0.1rem solid #c0c5d8;
+                    border-top: 0.1rem solid #c6d1ff;
 
                     &:last-child {
                         border-bottom: none;
@@ -116,8 +65,7 @@
 
                     label {
                         color: #ffffff;
-                        font-weight: 500;
-                        font-size: 1.35rem;
+                        font-size: 1.3rem;
                     }
                     input + label {
                         display: inline-flex;
@@ -167,6 +115,49 @@
                         background-color: #e9ecef;
                     }
                 }
+
+                &:hover {
+                    display: block;
+                }
+            }
         }
 
+        input[type="search"] {
+            width: 32rem;
+            height: 3.5rem;
+            background: #a2a7bb;
+            border-radius: 20px;
+
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.3rem;
+            line-height: 1.6rem;
+            letter-spacing: 0.05em;
+
+            padding: 0 1.5rem 0 5.2rem;
+            
+            color: #FFFFFF;
+
+            
+            outline: none;
+            border: 0.1rem solid #c6d1ff;
+            text-decoration: none;
+            // Close
+            &::-webkit-search-cancel-button {
+                -webkit-appearance: none;
+                
+                width: 2rem;
+                height: 2rem;
+                background: url('../../img/searchCloseIcon.svg');
+            }
+
+            @media (max-width: 870px) {
+                width: 28rem;
+            }
+
+            @media (max-width: 425px) {
+                width: 100%;
+            }
+        }
     }

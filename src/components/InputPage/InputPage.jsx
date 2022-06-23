@@ -13,7 +13,7 @@ const InputPage = ({ mode, color, text, label, ...props }) => {
             [styles.name]: color === "light",
             [styles.email]: color === "dark",
           })}
-          maxLength="25"
+          // maxLength="25"
           type="text"
         />
       )}

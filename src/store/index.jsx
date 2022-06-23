@@ -6,6 +6,7 @@ import { loginSlice } from "./slice/loginSlice";
 import { userDBSlice } from "./slice/userDBSlice";
 import { mobileSlice } from "./slice/mobileSlice";
 import { modalUserSlice } from "./slice/modalUser";
+import { searchSlice } from "./slice/searchSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     userDB: userDBSlice.reducer,
     mobile: mobileSlice.reducer,
     modalUser: modalUserSlice.reducer,
+    search: searchSlice.reducer,
   },
 });
 
