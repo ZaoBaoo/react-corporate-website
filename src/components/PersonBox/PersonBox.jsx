@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // Store
 import { useDispatch, useSelector } from "react-redux";
 import { modalUserAction } from "../../store/slice/modalUser";
@@ -10,7 +12,18 @@ import { UserPhoto } from "../UserPhoto";
 // Style
 import styles from "./PersonBox.module.scss";
 
+// Firebase
+import { storage } from "../../firebase";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+  listAll,
+} from "firebase/storage";
+
 const PersonBox = ({ firstName, lastName, department, uid }) => {
+  const [userIcon, setUserIcon] = useState(null);
+
   const { isMobileSize } = useSelector((state) => state.mobile);
 
   const dispatch = useDispatch();
@@ -24,10 +37,18 @@ const PersonBox = ({ firstName, lastName, department, uid }) => {
     dispatch(modalUserAction.setUID(uid));
   };
 
+  useEffect(() => {
+    // console.log(uid);
+    // getDownloadURL(ref(storage, `avatars/KUQq5TJySHWuTxNno0pvcUDxsl52`))
+    //   .then
+    //   (url) => console.log(url)
+    //   ();
+  }, []);
+
   return (
     <div className={styles.personBox}>
       <div className={styles.infoUser} onClick={showUserInModal}>
-        <UserPhoto size="s" src={miniUserIcon} />
+        <UserPhoto size="s" src={userIcon} />
 
         <div className={styles.infoName}>
           <span>{`${firstName} ${lastName}`}</span>

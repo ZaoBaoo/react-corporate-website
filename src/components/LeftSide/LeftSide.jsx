@@ -11,33 +11,40 @@ import { useSelector } from "react-redux";
 import styles from "./LeftSide.module.scss";
 import { PersonBox } from "../PersonBox";
 
+// Фильтрует пользователей
 const filterForSearch = (text, users, mode) => {
-  return Object.values(users).filter((user) => {
-    // Mode
+  const usersArr = sortUsers(users);
+
+  const toLower = (a) => a.toLowerCase();
+  const match = (a, b) => toLower(a).includes(toLower(b));
+
+  // Возвращает отсортированный массим с пользователями [{}, {}, {}]
+  return usersArr.filter((user) => {
+    // Поиск если включены критерии поиска
+    if (mode === "") {
+      if (match(user.department, text)) return true;
+      if (match(`${user.firstName} ${user.lastName}`, text)) return true;
+    }
+
+    // Поиск по стандарту, если критерии для поиска не выбраны
     if (mode) {
-      if (user[mode].toLowerCase().includes(text.toLowerCase())) {
-        return true;
-      }
-    }
-    // Имя + Фамилия
-    if (
-      `${user.firstName} ${user.lastName}`
-        .toLowerCase()
-        .includes(text.toLowerCase())
-    ) {
-      return true;
-    }
-    // Отдел
-    if (user.department.toLowerCase().includes(text.toLowerCase())) {
-      return true;
+      if (match(user[mode], text)) return true;
     }
   });
+};
+
+// Сортирует удаляя из списка пользователей авторизованного пользователя
+const sortUsers = (users) => {
+  return Object.values(users).filter(
+    (user) => user.uid !== auth.currentUser.uid
+  );
 };
 
 const LeftSide = () => {
   // LocalState
   const [users, setUsers] = useState([]);
 
+  // Store
   const { usersData } = useSelector((state) => state.userDB);
   const { textForSearch, searchMode } = useSelector((state) => state.search);
 
@@ -48,16 +55,14 @@ const LeftSide = () => {
       setUsers(sortUsers);
       return;
     }
-    textForSearch === "" && setUsers(Object.values(usersData));
+    textForSearch === "" && setUsers(sortUsers(usersData));
   }, [textForSearch, searchMode]);
 
-  // Initial отрисовка пользователей без фильра
+  // Начальная отрисовка пользователей без фильра и поиска
+  // И удаление авторизованного пользователя из списка
   useEffect(() => {
     if (usersData !== null) {
-      const usersArr = Object.values(usersData).filter(
-        (user) => user.uid !== auth.currentUser.uid
-      );
-      setUsers(usersArr);
+      setUsers(sortUsers(usersData));
     }
   }, [usersData]);
 

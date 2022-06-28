@@ -16,7 +16,7 @@ const useUserDB = () => {
   const { firstName, lastName, email, phoneNumber } = useSelector(
     (state) => state.registration
   );
-  // ТЕСТ
+
   const { userForShow } = useSelector((state) => state.modalUser);
 
   useEffect(() => {

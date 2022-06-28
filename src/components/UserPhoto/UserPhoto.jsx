@@ -1,8 +1,90 @@
-import cn from "classnames";
+import { useState, useEffect } from "react";
 
 import styles from "./UserPhoto.module.scss";
+import cn from "classnames";
+
+// STORAGE
+import { storage, auth } from "../../firebase";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+  listAll,
+  deleteObject,
+} from "firebase/storage";
 
 const UserPhoto = ({ size, src }) => {
+  const [imagesStatus, setImagesStatus] = useState({
+    isLoad: false,
+    progress: 0,
+  });
+
+  const formHandler = (e) => {
+    setImagesStatus((state) => ({ ...state, isLoad: true }));
+    e.preventDefault();
+    uploadFiles(e.target.files[0]);
+  };
+
+  const uploadFiles = async (file) => {
+    //
+    if (!file) return;
+
+    const refFolder = ref(storage, `/avatars/${auth.currentUser.uid}/`);
+    const refFile = ref(
+      storage,
+      `/avatars/${auth.currentUser.uid}/${file.name}`
+    );
+
+    // Получаем кол-во фото у пользователя
+    // Одно или ноль
+    const list = await listAll(refFolder);
+
+    // Пустая переменная
+    let namePhotoForRemove;
+
+    // Проверям есть ли загруженное фото
+    // Если есть, то помечаем его
+    if (list?.items?.length) {
+      namePhotoForRemove = list?.items[0].name;
+    }
+
+    const uploadTask = uploadBytesResumable(refFile, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const prog = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setImagesStatus((state) => ({ ...state, progress: prog }));
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          const removePhoto = () => {
+            // Ссылка на файл для удаления
+            const refFile = ref(
+              storage,
+              `/avatars/${auth.currentUser.uid}/${namePhotoForRemove}`
+            );
+
+            deleteObject(refFile).then(
+              console.log(`Файл ${namePhotoForRemove} удален`)
+            );
+          };
+
+          namePhotoForRemove && removePhoto();
+
+          console.log(url);
+
+          setImagesStatus((state) => ({ ...state, isLoad: false }));
+        });
+      }
+    );
+  };
+
   return (
     <div
       className={cn({
@@ -12,6 +94,20 @@ const UserPhoto = ({ size, src }) => {
       })}
     >
       <img src={src} alt="" className={styles.img} />
+      {size === "l" && (
+        <>
+          <form onChange={formHandler}>
+            <input
+              type="file"
+              accept="image/*"
+              id="fileLoad"
+              disabled={imagesStatus.isLoad}
+            />
+            <label htmlFor="fileLoad">Изменить</label>
+            {imagesStatus.isLoad && <span>{imagesStatus.progress} %</span>}
+          </form>
+        </>
+      )}
     </div>
   );
 };
