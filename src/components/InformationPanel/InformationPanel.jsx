@@ -17,7 +17,7 @@ import { userDBAction } from "../../store/slice/userDBSlice";
 import { registrationAction } from "../../store/slice/registrationSlice";
 
 // Test icon
-import userIcon from "../../img/userIcon.svg";
+import photo from "../../img/userIcon.svg";
 
 const InformationPanel = () => {
   const dispatch = useDispatch();
@@ -46,13 +46,15 @@ const InformationPanel = () => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.boxInformation} onClick={showUserInModal}>
-        <UserPhoto size="m" src={userIcon} />
         {userData && (
-          <TypographyMain
-            text={`${userData?.firstName} ${userData?.lastName}`}
-            second={userData?.email}
-            size="m"
-          />
+          <>
+            <UserPhoto size="m" src={userData.urlAvatar || photo} />
+            <TypographyMain
+              text={`${userData?.firstName} ${userData?.lastName}`}
+              second={userData?.email}
+              size="m"
+            />
+          </>
         )}
       </div>
       <ButtonLogin mode="logout" type="button" onClick={LogOut} />

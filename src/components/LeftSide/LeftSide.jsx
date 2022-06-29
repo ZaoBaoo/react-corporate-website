@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 // Firebase
-import { auth } from "../../firebase";
+import { storage, auth } from "../../firebase";
+import { ref, listAll } from "firebase/storage";
 
 // Store
 import { useSelector } from "react-redux";
@@ -66,11 +67,17 @@ const LeftSide = () => {
     }
   }, [usersData]);
 
+  useEffect(() => {
+    // const userRef = ref(storage, `avatars/`);
+    // listAll(userRef).then((img) => console.log(img));
+    // console.log("render");
+  }, [usersData]);
+
   return (
     <>
       <div className={styles.leftSide}>
         {users.map((user) => {
-          const { firstName, lastName, department, uid } = user;
+          const { firstName, lastName, department, uid, urlAvatar } = user;
           return (
             <PersonBox
               key={uid}
@@ -78,6 +85,7 @@ const LeftSide = () => {
               firstName={firstName}
               lastName={lastName}
               department={department}
+              urlAvatar={urlAvatar}
             />
           );
         })}

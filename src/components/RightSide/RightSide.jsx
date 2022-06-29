@@ -75,13 +75,6 @@ const RightSide = () => {
     }
   }, [uidForShow, usersData, userData]);
 
-  // TEST
-  useEffect(() => {
-    if (uidForShow === auth?.currentUser?.uid) {
-      console.log("Наша страница");
-    }
-  }, [uidForShow]);
-
   return (
     <>
       <div className={styles.rightSide} style={{ pointerEvents: "auto" }}>
@@ -96,27 +89,34 @@ const RightSide = () => {
             <button className={styles.btnClose} onClick={closeModal} />
           )}
           <div className={styles.headerUserPanel}>
-            <UserPhoto size="l" src={photo} />
             {currentUser && (
-              <div className={styles.wrapper}>
-                <InputPage
-                  disabled={editDisabled}
-                  mode="withoutLabel"
-                  color="light"
-                  text={fullName}
-                  onChange={saveNewDataForInput}
-                  data-id="fullName"
+              <>
+                <UserPhoto
+                  size="l"
+                  src={currentUser.urlAvatar || photo}
+                  uid={currentUser.uid}
                 />
 
-                <InputPage
-                  disabled={editDisabled}
-                  mode="withoutLabel"
-                  color="dark"
-                  text={currentUser?.email}
-                  onChange={saveNewDataForInput}
-                  data-id="email"
-                />
-              </div>
+                <div className={styles.wrapper}>
+                  <InputPage
+                    disabled={editDisabled}
+                    mode="withoutLabel"
+                    color="light"
+                    text={fullName}
+                    onChange={saveNewDataForInput}
+                    data-id="fullName"
+                  />
+
+                  <InputPage
+                    disabled={editDisabled}
+                    mode="withoutLabel"
+                    color="dark"
+                    text={currentUser?.email}
+                    onChange={saveNewDataForInput}
+                    data-id="email"
+                  />
+                </div>
+              </>
             )}
           </div>
           <hr />

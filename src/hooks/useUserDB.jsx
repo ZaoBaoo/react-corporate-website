@@ -32,19 +32,18 @@ const useUserDB = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const creatUserDB = () => {
+      set(ref(db, `/users/${auth.currentUser.uid}`), {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        department: "",
+        position: "",
+        uid: auth.currentUser.uid,
+      });
+    };
     if (response !== undefined) {
-      const creatUserDB = () => {
-        set(ref(db, `/users/${auth.currentUser.uid}`), {
-          firstName,
-          lastName,
-          email,
-          phoneNumber,
-          department: "",
-          position: "",
-          uid: auth.currentUser.uid,
-        });
-      };
-
       if (response === null) {
         creatUserDB();
         return;
@@ -62,9 +61,10 @@ const useUserDB = () => {
 
       // ТЕСТ
       // Для отображения в modal (right side)
-      if (userForShow === "") {
-        dispatch(modalUserAction.setUserForShow(user));
-      }
+
+      // if (userForShow === "") {
+      //   dispatch(modalUserAction.setUserForShow(user));
+      // }
 
       // Список пользователей
       dispatch(userDBAction.setUsersData(response));

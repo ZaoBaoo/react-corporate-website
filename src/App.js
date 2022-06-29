@@ -30,11 +30,13 @@ import { TestPageTwo } from "./test/TestPageTwo";
 // HOOKs
 import { useUserDB } from "./hooks/useUserDB";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useAvatar } from "./hooks/useAvatar";
 //
 
 function App() {
   useUserDB();
   useLocalStorage();
+  // useAvatar();
   //
   const { isLoggedIn } = useSelector((state) => state.login);
   const { editDisabled } = useSelector((state) => state.modalUser);

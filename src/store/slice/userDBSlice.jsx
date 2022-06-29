@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserDBState = {
-  // isDataReceived: false,
   userData: null,
   usersData: null,
+  // avatars: null,
 };
 
 const userDBSlice = createSlice({
@@ -20,6 +20,9 @@ const userDBSlice = createSlice({
       state.usersData = null;
       state.userData = null;
     },
+    // setAvatarNameList(state, action) {
+    //   state.avatars = action.payload;
+    // },
   },
 });
 
