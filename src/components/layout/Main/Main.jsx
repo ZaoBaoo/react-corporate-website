@@ -49,7 +49,7 @@ const Main = () => {
             {(isMobileSize && !showModal) || <RightSide />}
           </General>
 
-          <Push />
+          {isMobileSize || <Push />}
         </>
       )}
     </>

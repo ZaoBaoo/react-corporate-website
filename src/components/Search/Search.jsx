@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 // Style
 import styles from "./Search.module.scss";
 
+// Animate
+import { AnimatePresence, motion } from "framer-motion";
+
 const Search = () => {
   const [showDropDown, setDropDown] = useState(false);
   const [searchMode, setSearchMode] = useState("");
@@ -63,55 +66,64 @@ const Search = () => {
       </div>
 
       {showDropDown && (
-        <>
-          <div className={styles.dropDown} data-dropdown>
-            <div className={styles.dropDownHeader} data-dropdown>
-              <span data-dropdown>Поиск по:</span>
-            </div>
+        <AnimatePresence>
+          <>
+            <motion.div
+              className={styles.dropDown}
+              data-dropdown
+              initial={{ y: "-1rem", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-1rem", opacity: 0 }} // не работает
+              transition={{ ease: "linear", duration: 0.25 }}
+            >
+              <div className={styles.dropDownHeader} data-dropdown>
+                <span data-dropdown>Поиск по:</span>
+              </div>
 
-            <dir data-dropdown className={styles.groupRadio}>
-              <input
-                data-dropdown
-                type="checkbox"
-                name="search"
-                id="firstName"
-                onChange={switchSearchMode}
-                checked={searchMode === "firstName" ? true : false}
-              />
-              <label data-dropdown htmlFor="firstName">
-                Имя
-              </label>
-            </dir>
+              <dir data-dropdown className={styles.groupRadio}>
+                <input
+                  data-dropdown
+                  type="checkbox"
+                  name="search"
+                  id="firstName"
+                  onChange={switchSearchMode}
+                  checked={searchMode === "firstName" ? true : false}
+                />
+                <label data-dropdown htmlFor="firstName">
+                  Имя
+                </label>
+              </dir>
 
-            <dir data-dropdown className={styles.groupRadio}>
-              <input
-                data-dropdown
-                type="checkbox"
-                name="search"
-                id="lastName"
-                onChange={switchSearchMode}
-                checked={searchMode === "lastName" ? true : false}
-              />
-              <label data-dropdown htmlFor="lastName">
-                Фамилия
-              </label>
-            </dir>
+              <dir data-dropdown className={styles.groupRadio}>
+                <input
+                  data-dropdown
+                  type="checkbox"
+                  name="search"
+                  id="lastName"
+                  onChange={switchSearchMode}
+                  checked={searchMode === "lastName" ? true : false}
+                />
+                <label data-dropdown htmlFor="lastName">
+                  Фамилия
+                </label>
+              </dir>
 
-            <dir data-dropdown className={styles.groupRadio}>
-              <input
-                data-dropdown
-                type="checkbox"
-                name="search"
-                id="department"
-                onChange={switchSearchMode}
-                checked={searchMode === "department" ? true : false}
-              />
-              <label data-dropdown htmlFor="department">
-                Отдел
-              </label>
-            </dir>
-          </div>
-        </>
+              <dir data-dropdown className={styles.groupRadio}>
+                <input
+                  data-dropdown
+                  type="checkbox"
+                  name="search"
+                  id="department"
+                  onChange={switchSearchMode}
+                  checked={searchMode === "department" ? true : false}
+                />
+                <label data-dropdown htmlFor="department">
+                  Отдел
+                </label>
+              </dir>
+            </motion.div>
+          </>
+        </AnimatePresence>
       )}
     </div>
   );

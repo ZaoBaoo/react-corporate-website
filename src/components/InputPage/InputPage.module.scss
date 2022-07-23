@@ -61,6 +61,14 @@
         font-size: 2.67rem;
     }
 
+    @media (max-width: 1000px) {
+        font-size: 2.67rem;
+    }
+
+    @media (max-width: 360px) {
+        max-width: 30rem;
+    }
+
 }
 
 .email {
@@ -79,6 +87,7 @@
     background-color: inherit;
     border: none;
     outline: none;
+    cursor: pointer;
 
     &:hover {
         border: none;
@@ -126,6 +135,9 @@
 
     padding: 2rem 2rem;
 
+    a {
+        width: 100%;
+    }
     
 
     span {
@@ -151,6 +163,7 @@
 
         border: none;
         outline: none;
+        
 
         padding-left: 1rem;
         font-family: 'Montserrat';
@@ -176,6 +189,7 @@
             font-style: normal;
             outline: none;
             text-decoration: none;
+            cursor: pointer;
         }
         
         &:hover {
@@ -201,19 +215,6 @@
                 background: #b2b6c6;
             }
         }
-
-
-        // &::placeholder {
-        //     font-family: 'Montserrat';
-        //     font-style: normal;
-        //     font-weight: 500;
-        //     font-size: 1.3rem;
-        //     text-align: center;
-            
-        //     letter-spacing: 0.05em;
-            
-        //     color: #FFFFFF;
-        // }
     }
 
     @media (max-width: 1140px) {

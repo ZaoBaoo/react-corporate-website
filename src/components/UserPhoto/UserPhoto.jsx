@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import styles from "./UserPhoto.module.scss";
 import cn from "classnames";
@@ -41,9 +41,13 @@ const UserPhoto = ({ size, src, uid }) => {
       // Одно или ноль
       const list = await listAll(refFolder);
 
-      if (list?.items[0].name === file.name) {
-        setImagesStatus((state) => ({ ...state, isLoad: false }));
-        throw new Error("Такой файл уже сушествует");
+      // Проверям имя у загружаемого файла и файла на сервере
+      // Если имена совпадают, то выбрасываем ошибку
+      if (list?.items.length) {
+        if (list?.items[0].name === file.name) {
+          setImagesStatus((state) => ({ ...state, isLoad: false }));
+          throw new Error("Такой файл уже сушествует");
+        }
       }
 
       // Пустая переменная

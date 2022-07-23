@@ -19,6 +19,9 @@ import { registrationAction } from "../../store/slice/registrationSlice";
 // Test icon
 import photo from "../../img/userIcon.svg";
 
+// Animate
+import { motion } from "framer-motion";
+
 const InformationPanel = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userDB);
@@ -45,7 +48,12 @@ const InformationPanel = () => {
 
   return (
     <div className={styles.boxWrapper}>
-      <div className={styles.boxInformation} onClick={showUserInModal}>
+      <motion.div
+        className={styles.boxInformation}
+        onClick={showUserInModal}
+        initial={{ x: 0 }}
+        whileHover={{ x: "0.5rem" }}
+      >
         {userData && (
           <>
             <UserPhoto size="m" src={userData.urlAvatar || photo} />
@@ -56,7 +64,7 @@ const InformationPanel = () => {
             />
           </>
         )}
-      </div>
+      </motion.div>
       <ButtonLogin mode="logout" type="button" onClick={LogOut} />
     </div>
   );

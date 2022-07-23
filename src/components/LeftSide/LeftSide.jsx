@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
 // Firebase
-import { storage, auth } from "../../firebase";
-import { ref, listAll } from "firebase/storage";
+import { auth } from "../../firebase";
 
 // Store
 import { useSelector } from "react-redux";
-// import { userDBAction } from "../../store/slice/userDBSlice";
 
 // Components
 import styles from "./LeftSide.module.scss";
@@ -41,6 +39,16 @@ const sortUsers = (users) => {
   );
 };
 
+const personVariants = {
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.08,
+    },
+  }),
+  hidden: { opacity: 0 },
+};
+
 const LeftSide = () => {
   // LocalState
   const [users, setUsers] = useState([]);
@@ -67,16 +75,10 @@ const LeftSide = () => {
     }
   }, [usersData]);
 
-  useEffect(() => {
-    // const userRef = ref(storage, `avatars/`);
-    // listAll(userRef).then((img) => console.log(img));
-    // console.log("render");
-  }, [usersData]);
-
   return (
     <>
       <div className={styles.leftSide}>
-        {users.map((user) => {
+        {users.map((user, i) => {
           const { firstName, lastName, department, uid, urlAvatar } = user;
           return (
             <PersonBox
@@ -86,6 +88,10 @@ const LeftSide = () => {
               lastName={lastName}
               department={department}
               urlAvatar={urlAvatar}
+              variants={personVariants}
+              initial="hidden"
+              animate="visible"
+              custom={i}
             />
           );
         })}
