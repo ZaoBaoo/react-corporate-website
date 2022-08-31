@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-corporate-website/static/css/main.866500c0.css",
-    "main.js": "/react-corporate-website/static/js/main.1784ad32.js",
+    "main.css": "/react-corporate-website/static/css/main.1bc64969.css",
+    "main.js": "/react-corporate-website/static/js/main.f904adb0.js",
     "static/media/Montserrat-Bold.woff": "/react-corporate-website/static/media/Montserrat-Bold.3155f256200b7d559607.woff",
     "static/media/Montserrat-SemiBold.woff": "/react-corporate-website/static/media/Montserrat-SemiBold.411a4d1469b75e0248ff.woff",
     "static/media/Montserrat-Medium.woff": "/react-corporate-website/static/media/Montserrat-Medium.2451e96bc4c62e5ad1d0.woff",
@@ -20,15 +20,17 @@
     "static/media/messageIcon.svg": "/react-corporate-website/static/media/messageIcon.60c601890832d71279d2a63f5c976939.svg",
     "static/media/userIcon.svg": "/react-corporate-website/static/media/userIcon.5bf9c73aaa932cb698a1e25c9a0d15ba.svg",
     "index.html": "/react-corporate-website/index.html",
+    "static/media/chatInputSent.svg": "/react-corporate-website/static/media/chatInputSent.e7658797f4adc77eb498.svg",
+    "static/media/chatCloseIcon.svg": "/react-corporate-website/static/media/chatCloseIcon.5b8e5a210f202e83ffb2a44746ec7450.svg",
     "static/media/editIcon.svg": "/react-corporate-website/static/media/editIcon.48f8aebe3e965fad5ae9.svg",
     "static/media/searchCloseIcon.svg": "/react-corporate-website/static/media/searchCloseIcon.b82baacf6014b50a72f8.svg",
     "static/media/btnLogout.svg": "/react-corporate-website/static/media/btnLogout.dc8c8bb6aee1e9b00f42.svg",
     "static/media/checkMarkIcon.svg": "/react-corporate-website/static/media/checkMarkIcon.819ca505cd1653c5f133.svg",
-    "main.866500c0.css.map": "/react-corporate-website/static/css/main.866500c0.css.map",
-    "main.1784ad32.js.map": "/react-corporate-website/static/js/main.1784ad32.js.map"
+    "main.1bc64969.css.map": "/react-corporate-website/static/css/main.1bc64969.css.map",
+    "main.f904adb0.js.map": "/react-corporate-website/static/js/main.f904adb0.js.map"
   },
   "entrypoints": [
-    "static/css/main.866500c0.css",
-    "static/js/main.1784ad32.js"
+    "static/css/main.1bc64969.css",
+    "static/js/main.f904adb0.js"
   ]
 }
