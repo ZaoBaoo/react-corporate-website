@@ -31,10 +31,10 @@ const InformationPanel = () => {
   const showUserInModal = () => {
     if (isMobileSize) {
       dispatch(modalUserAction.setShowModal(true));
-      dispatch(modalUserAction.setUID(userData.uid));
+      dispatch(modalUserAction.setUIDForShowUserPage(userData.uid));
       return;
     }
-    dispatch(modalUserAction.setUID(userData.uid));
+    dispatch(modalUserAction.setUIDForShowUserPage(userData.uid));
   };
 
   // (f)

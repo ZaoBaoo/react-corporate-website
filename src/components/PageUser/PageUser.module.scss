@@ -1,0 +1,145 @@
+.btnEdit,
+.btnSaveEdit {
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+
+    width: 4.5rem;
+    height: 4.5rem;
+
+    background-image: url('../../img/editIcon.svg');
+    background-color: initial;
+    background-repeat: no-repeat;
+    background-size: 67%;
+    background-position: right 0.6rem top 0.7rem;
+
+    filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.5));
+
+    border: 0.19rem solid #656565;
+    border-radius: 1rem;
+
+    cursor: pointer;
+
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+        background-color: #a9aec0;
+    }
+
+    @media (max-width: 800px) {
+        left: 4rem;
+    }
+}
+
+.btnSaveEdit {
+    background-image: url('../../img/checkMarkIcon.svg');
+    background-color: #7b9682;
+    background-repeat: no-repeat;
+    background-size: 67%;
+    background-position: right 0.6rem top 0.7rem;
+
+    animation: pulse 1.2s ease-in-out infinite;
+
+    @keyframes pulse {
+        0% {
+            background-color: #7b9682;
+        }
+
+        50% {
+            background-color: inherit;
+        }
+
+        100% {
+            background-color: #7b9682;
+        }
+    }
+}
+
+.btnClose {
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+
+    border: none;
+    background-image: url('../../img/pageCloseIcon.svg');
+    background-repeat: no-repeat;
+    background-size: 65%;
+    background-position: right 0.85rem top 0.85rem;
+    background-color: inherit;
+
+    cursor: pointer;
+
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+        background-color: #9ea2ad;
+    }
+
+    @media (min-width: 814px) {
+        display: none;
+    }
+
+    @media (max-width: 370px) {
+        top: 5rem;
+        right: 2rem;
+
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+hr {
+    border: none;
+    
+    background: #888888;
+    height: 2px;
+    margin-top: 4rem;
+}
+
+.headerUserPanel {
+    display: flex;
+    
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-top: 0.5rem;
+        justify-content: center;
+        
+        padding-left: 3.5rem;
+
+        @media (max-width: 1140px) {
+            padding-left: 0;
+            padding-top: 3rem;
+            text-align: center;
+        }
+    }
+    
+    @media (max-width: 1140px) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.mainUserPanel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+    
+    padding: 2.5rem 0 0 0;
+    
+    .layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        width: 100vw;
+        height: 100vh;
+        background: #121212;
+    }
+}

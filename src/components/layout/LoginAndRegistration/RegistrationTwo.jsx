@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -16,6 +17,7 @@ import { ModalAndWrapper } from "./ModalAndWrapper";
 import { emailVal, telVal } from "./Validate";
 
 const RegistrationTwo = () => {
+  const refButtonNextPage = useRef(null);
   // Navigate
   const next = useNavigate();
 
@@ -70,6 +72,8 @@ const RegistrationTwo = () => {
           mode="inputLine"
           label="Почта"
           type="text"
+          autoFocus
+          refButtonNextPage={refButtonNextPage}
         />
 
         <InputLogin
@@ -85,6 +89,7 @@ const RegistrationTwo = () => {
             e.target.value = normalizePhoneNumber(e.target.value);
           }}
           maxLength="15"
+          refButtonNextPage={refButtonNextPage}
         />
         <div
           style={{
@@ -97,7 +102,12 @@ const RegistrationTwo = () => {
             <ButtonLogin mode="registration" name="НАЗАД" />
           </Link>
 
-          <ButtonLogin mode="registration" name="ДАЛЕЕ" type="submit" />
+          <ButtonLogin
+            mode="registration"
+            name="ДАЛЕЕ"
+            type="submit"
+            ref={refButtonNextPage}
+          />
         </div>
       </ModalAndWrapper>
     </form>

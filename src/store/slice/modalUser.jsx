@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialModalState = {
   showModal: false,
-  uidForShow: "",
+  uidForShowUserPage: "",
+  uidForShowChat: "",
   editDisabled: true,
 };
 
@@ -13,11 +14,14 @@ const modalUserSlice = createSlice({
     setShowModal(state, actions) {
       state.showModal = actions.payload;
     },
-    setUID(state, actions) {
-      state.uidForShow = actions.payload;
+    setUIDForShowUserPage(state, actions) {
+      state.uidForShowUserPage = actions.payload;
     },
     toggleEdit(state) {
       state.editDisabled = !state.editDisabled;
+    },
+    setUIDForShowChat(state, actions) {
+      state.uidForShowChat = actions.payload;
     },
   },
 });

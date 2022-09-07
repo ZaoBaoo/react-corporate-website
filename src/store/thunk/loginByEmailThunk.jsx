@@ -58,7 +58,7 @@ const loginByEmailThunk = (payload) => {
           dispatch(
             loginAction.setError({
               name: emailInputname,
-              message: error.error.message,
+              message: error.code,
             })
           );
           break;

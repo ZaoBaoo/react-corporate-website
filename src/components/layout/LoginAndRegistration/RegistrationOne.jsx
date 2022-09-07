@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -13,7 +14,9 @@ import { ModalAndWrapper } from "./ModalAndWrapper";
 
 import { textVal } from "./Validate";
 
-const RegistrationOne = () => {
+const RegistrationOne = (props) => {
+  const refButtonNextPage = useRef(null);
+
   // Navigate
   const next = useNavigate();
 
@@ -57,6 +60,8 @@ const RegistrationOne = () => {
           mode="inputLine"
           label="Имя"
           type="text"
+          autoFocus
+          refButtonNextPage={refButtonNextPage}
         />
         <InputLogin
           register={register}
@@ -66,6 +71,7 @@ const RegistrationOne = () => {
           mode="inputLine"
           label="Фамилия"
           type="text"
+          refButtonNextPage={refButtonNextPage}
         />
         <div
           style={{
@@ -78,7 +84,12 @@ const RegistrationOne = () => {
             <ButtonLogin mode="registration" name="НАЗАД" />
           </Link>
 
-          <ButtonLogin mode="registration" name="ДАЛЕЕ" type="submit" />
+          <ButtonLogin
+            mode="registration"
+            name="ДАЛЕЕ"
+            type="submit"
+            ref={refButtonNextPage}
+          />
         </div>
       </ModalAndWrapper>
     </form>

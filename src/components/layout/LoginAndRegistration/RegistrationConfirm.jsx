@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Store
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +13,8 @@ import { TextLogin } from "../../TextLogin";
 import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
 
 const RegistrationConfirm = () => {
+  const [loading, setLoading] = useState(false);
+
   // Dispatch
   const dispatch = useDispatch();
 
@@ -26,13 +28,25 @@ const RegistrationConfirm = () => {
     errorRegistration,
   } = useSelector((state) => state.registration);
 
+  const { isLoggedIn } = useSelector((state) => state.login);
+
   // (f) Регистрация
   const signUpHandler = (e) => {
+    setLoading(true);
     e.preventDefault();
     const dataForSignUp = { firstName, lastName, email, phoneNumber, password };
     //
     dispatch(registrationByEmailThunk(dataForSignUp));
   };
+
+  useEffect(() => {
+    if (errorRegistration) {
+      setLoading(false);
+    }
+    if (isLoggedIn) {
+      setLoading(false);
+    }
+  }, [errorRegistration, isLoggedIn]);
 
   // Удаление ошибки
   useEffect(() => {
@@ -54,6 +68,8 @@ const RegistrationConfirm = () => {
           mode="registration"
           name="ЗАРЕГИСТРИРОВАТЬСЯ"
           type="submit"
+          //
+          loading={loading}
         />
       </ModalAndWrapper>
     </form>

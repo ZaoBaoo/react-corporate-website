@@ -1,24 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
+// Components
+import { Oval } from "react-loader-spinner";
+
+// Styles
 import styles from "./UserPhoto.module.scss";
 import cn from "classnames";
 
 // STORAGE
-import { storage, auth, db } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { ref as dbRef, update } from "firebase/database";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytesResumable,
-  listAll,
-  deleteObject,
-} from "firebase/storage";
 
 const UserPhoto = ({ size, src, uid }) => {
-  const [imagesStatus, setImagesStatus] = useState({
-    isLoad: false,
-    progress: 0,
-  });
+  const [imageIsLoading, setImageIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const inputFile = useRef(null);
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -26,85 +23,59 @@ const UserPhoto = ({ size, src, uid }) => {
   };
 
   const uploadFiles = async (file) => {
+    if (!file) return;
+
+    setImageIsLoading(true);
+
+    const formData = new FormData();
+
+    formData.append("image", file);
+
     try {
-      //
-      if (!file) return;
-      setImagesStatus((state) => ({ ...state, isLoad: true }));
-
-      const refFolder = ref(storage, `/avatars/${auth.currentUser.uid}/`);
-      const refFile = ref(
-        storage,
-        `/avatars/${auth.currentUser.uid}/${file.name}`
-      );
-
-      // Получаем кол-во фото у пользователя
-      // Одно или ноль
-      const list = await listAll(refFolder);
-
-      // Проверям имя у загружаемого файла и файла на сервере
-      // Если имена совпадают, то выбрасываем ошибку
-      if (list?.items.length) {
-        if (list?.items[0].name === file.name) {
-          setImagesStatus((state) => ({ ...state, isLoad: false }));
-          throw new Error("Такой файл уже сушествует");
-        }
-      }
-
-      // Пустая переменная
-      let namePhotoForRemove;
-
-      // Проверям есть ли загруженное фото
-      // Если есть, то помечаем его
-      if (list?.items?.length) {
-        namePhotoForRemove = list?.items[0].name;
-      }
-
-      const uploadTask = uploadBytesResumable(refFile, file);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const prog = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setImagesStatus((state) => ({ ...state, progress: prog }));
-        },
-        (err) => {
-          setImagesStatus((state) => ({ progress: 0, isLoad: false }));
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            const removePhoto = () => {
-              // Ссылка на файл для удаления
-              const refFile = ref(
-                storage,
-                `/avatars/${auth.currentUser.uid}/${namePhotoForRemove}`
-              );
-
-              deleteObject(refFile).then(
-                console.log(`Файл ${namePhotoForRemove} удален`)
-              );
-            };
-
-            namePhotoForRemove && removePhoto();
-
-            addAvatarUrl(url);
-
-            // setImagesStatus((state) => ({ ...state, isLoad: false }));
-            setImagesStatus((state) => ({ progress: 0, isLoad: false }));
-          });
+      const data = await fetch(
+        `https://compress-pictures.herokuapp.com/api?uid=${auth.currentUser.uid}`,
+        {
+          method: "POST",
+          body: formData,
         }
       );
+
+      inputFile.current.value = "";
+
+      if (data.status !== 200) {
+        switch (data.status) {
+          case 415:
+            setError("Данный формат файла не поддерживается");
+            break;
+
+          default:
+            setError("Возникла ошибка");
+            break;
+        }
+
+        throw new Error("Error");
+      }
+
+      await addAvatarUrl(await data.json());
     } catch (error) {
-      console.dir(error.message);
+      setError("Произошла ошибка!");
+      setImageIsLoading(false);
+      throw new Error(error);
     }
   };
 
-  const addAvatarUrl = (url) => {
-    update(dbRef(db, `/users/${auth.currentUser.uid}`), {
-      urlAvatar: url,
+  const addAvatarUrl = async (data) => {
+    await update(dbRef(db, `/users/${auth.currentUser.uid}`), {
+      urlAvatar: data.url,
     });
+    setImageIsLoading(false);
   };
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => setError(null), 3000);
+    }
+  }, [error]);
 
   return (
     <div
@@ -116,18 +87,31 @@ const UserPhoto = ({ size, src, uid }) => {
     >
       <img src={src} alt="" className={styles.img} />
       {size === "l" && auth.currentUser.uid === uid && (
-        <>
-          <form onChange={formHandler}>
-            <input
-              type="file"
-              accept="image/*"
-              id="fileLoad"
-              disabled={imagesStatus.isLoad}
+        <form onChange={formHandler}>
+          <input
+            ref={inputFile}
+            type="file"
+            accept="image/*"
+            id="fileLoad"
+            disabled={imageIsLoading}
+          />
+          <label
+            style={{ zIndex: imageIsLoading ? "-100" : "3" }}
+            htmlFor="fileLoad"
+          >
+            Изменить
+          </label>
+          {imageIsLoading && (
+            <Oval
+              wrapperClass={styles.oval}
+              visible={true}
+              strokeWidth={1.2}
+              strokeWidthSecondary={1.2}
+              secondaryColor="#ffffff"
             />
-            <label htmlFor="fileLoad">Изменить</label>
-            {imagesStatus.isLoad && <span>{imagesStatus.progress} %</span>}
-          </form>
-        </>
+          )}
+          {error && <span className={styles.error}>{error}</span>}
+        </form>
       )}
     </div>
   );

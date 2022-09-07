@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -21,6 +22,8 @@ const RegistrationThree = () => {
   // State toggle password | "text" or "password"
   const [showPasswordReg1, setShowPasswordReg1] = useState(false);
   const [showPasswordReg2, setShowPasswordReg2] = useState(false);
+
+  const refButtonNextPage = useRef(null);
 
   // Navigate
   const next = useNavigate();
@@ -80,6 +83,8 @@ const RegistrationThree = () => {
           label="Пароль"
           type={showPasswordReg1 ? "text" : "password"}
           iconEyeToggle={setShowPasswordReg1}
+          autoFocus
+          refButtonNextPage={refButtonNextPage}
         />
 
         <InputLogin
@@ -91,6 +96,7 @@ const RegistrationThree = () => {
           label="Повторите пароль"
           type={showPasswordReg2 ? "text" : "password"}
           iconEyeToggle={setShowPasswordReg2}
+          refButtonNextPage={refButtonNextPage}
         />
 
         <div
@@ -104,7 +110,12 @@ const RegistrationThree = () => {
             <ButtonLogin mode="registration" name="НАЗАД" />
           </Link>
 
-          <ButtonLogin mode="registration" name="ДАЛЕЕ" type="submit" />
+          <ButtonLogin
+            mode="registration"
+            name="ДАЛЕЕ"
+            type="submit"
+            ref={refButtonNextPage}
+          />
         </div>
       </ModalAndWrapper>
     </form>

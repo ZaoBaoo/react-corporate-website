@@ -10,6 +10,7 @@ const InputLogin = ({
   val,
   iconEyeToggle,
   errors,
+  refButtonNextPage,
   ...props
 }) => {
   return (
@@ -20,7 +21,18 @@ const InputLogin = ({
       })}
     >
       <label>
-        <input {...register(name, val)} type={type} {...props} required />
+        <input
+          {...register(name, val)}
+          type={type}
+          {...props}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              refButtonNextPage.current.click();
+            }
+          }}
+          required
+        />
 
         <span>{label}</span>
         {errors?.[name] && (

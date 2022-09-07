@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 // Animate
 import { motion } from "framer-motion";
 
@@ -23,8 +21,6 @@ const PersonBox = ({
   urlAvatar,
   ...animate
 }) => {
-  const [userIcon, setUserIcon] = useState(null);
-
   const { isMobileSize } = useSelector((state) => state.mobile);
 
   const dispatch = useDispatch();
@@ -32,10 +28,20 @@ const PersonBox = ({
   const showUserInModal = () => {
     if (isMobileSize) {
       dispatch(modalUserAction.setShowModal(true));
-      dispatch(modalUserAction.setUID(uid));
+      dispatch(modalUserAction.setUIDForShowUserPage(uid));
       return;
     }
-    dispatch(modalUserAction.setUID(uid));
+    dispatch(modalUserAction.setUIDForShowChat(""));
+    dispatch(modalUserAction.setUIDForShowUserPage(uid));
+  };
+
+  const showChatInModal = () => {
+    if (isMobileSize) {
+      dispatch(modalUserAction.setShowModal(true));
+      dispatch(modalUserAction.setUIDForShowChat(uid));
+      return;
+    }
+    dispatch(modalUserAction.setUIDForShowChat(uid));
   };
 
   return (
@@ -53,7 +59,12 @@ const PersonBox = ({
           <div className={styles.infoDepartment}>{department}</div>
         </div>
       </motion.div>
-      <img src={messageIcon} alt="" className={styles.messageUserIcon} />
+      <img
+        onClick={showChatInModal}
+        src={messageIcon}
+        alt=""
+        className={styles.messageUserIcon}
+      />
     </motion.div>
   );
 };

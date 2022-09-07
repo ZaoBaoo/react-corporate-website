@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { loginByEmailThunk } from "../../../store/thunk/loginByEmailThunk";
@@ -17,8 +17,11 @@ import { ButtonLogin } from "../../ButtonLogin";
 import { emailVal, passVal } from "./Validate";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   // Selector store
-  const { errorLogin } = useSelector((state) => state.login);
+  const { errorLogin, isLoggedIn } = useSelector((state) => state.login);
+
+  const refButtonNextPage = useRef(null);
 
   // dispatch
   const dispatch = useDispatch();
@@ -34,11 +37,21 @@ const Login = () => {
 
   // (f) АВТОРИЗАЦИЯ
   const handlerLogin = (data) => {
+    setLoading(true);
     // Удаление ошибки из store(если она есть)
     dispatch(loginAction.clearErrorHandler());
     // Пытаемся войти
     dispatch(loginByEmailThunk(data));
   };
+
+  useEffect(() => {
+    if (errorLogin?.message) {
+      setLoading(false);
+    }
+    if (isLoggedIn) {
+      setLoading(false);
+    }
+  }, [isLoggedIn, errorLogin]);
 
   // (e) Удаление ошибки при перерендере
   useEffect(() => {
@@ -64,7 +77,7 @@ const Login = () => {
       clearErrors();
     }
   }, [errorLogin, clearErrors]);
-  //
+
   return (
     <form action="" onSubmit={handleSubmit(handlerLogin)}>
       <ModalAndWrapper>
@@ -77,6 +90,8 @@ const Login = () => {
           mode="inputBorder"
           label="Почта"
           type="email"
+          autoFocus
+          refButtonNextPage={refButtonNextPage}
         />
         <TextLogin text="Забыли пароль?" position="right" />
         <InputLogin
@@ -87,13 +102,22 @@ const Login = () => {
           mode="inputBorder"
           label="Пароль"
           type="password"
+          refButtonNextPage={refButtonNextPage}
         />
         <TextLogin
           text="Нет учетной записи?"
           linkedText=" Создать."
           linkedTo="/registrationone"
         />
-        <ButtonLogin mode="login" name="Войти" type="submit" />
+
+        <ButtonLogin
+          mode="login"
+          name="Войти"
+          type="submit"
+          ref={refButtonNextPage}
+          //
+          loading={loading}
+        />
       </ModalAndWrapper>
     </form>
   );

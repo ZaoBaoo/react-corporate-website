@@ -13,6 +13,7 @@
 }
 
 .btnLogin {
+    position: relative;
 
     font-style: normal;
     font-weight: 500;
@@ -34,6 +35,16 @@
     &:hover {
         background: rgba(31, 31, 31, 0.3);
         border: 0.1rem solid transparent;
+    }
+
+    svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -69,6 +80,16 @@
 
     &:hover::before {
         left: 0;
+    }
+
+    svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 
     span {

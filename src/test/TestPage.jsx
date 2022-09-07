@@ -3,7 +3,9 @@
 //
 //               test@gg.gg
 //               test@gg.gg
-//
+
+//               test2@gg.gg
+//               test2@gg.gg
 //
 //
 //
@@ -61,19 +63,30 @@ import {
 import styles from "./TestPage.module.scss";
 import { async } from "@firebase/util";
 
-const MY_UID = "Od7R2Epsz0QzDKdRp0Jie52CLOr2";
-const OTHER_USER_UID = "QPRtv6R3GndKDXNnk7JRc4yDEA83";
+// const OTHER_USER_UID = "QPRtv6R3GndKDXNnk7JRc4yDEA83";
 
 const getSortMessage = (message) => message.sort((a, b) => a.dateAt - b.dateAt);
+const getConcatArray = (arr1, arr2) => {
+  const newArr1 = [];
+  const newArr2 = [];
+  if (arr1.length) {
+    newArr1 = [...arr1];
+  }
+  if (arr2.length) {
+    newArr2 = [...arr2];
+  }
+  return [...newArr1, ...newArr2];
+};
 
 const TestPage = () => {
   // State
   const [data, setData] = useState({ email: "", password: "" });
   const [textMessage, setTextMessage] = useState("");
-  const [status, setStatus] = useState("не зашли");
   const [myMessagesList, setMyMessagesList] = useState([]);
   const [userMessagesList, setUserMessagesList] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
+  // TEST
+  const [OTHER_USER_UID, setOTHER_USER_UID] = useState("");
 
   // (f) setState
   const dataHandler = (e) => {
@@ -103,7 +116,7 @@ const TestPage = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
 
-      console.log(auth.currentUser);
+      // console.log(auth.currentUser);
     } catch (error) {
       console.log(error.message);
     }
@@ -118,7 +131,10 @@ const TestPage = () => {
     // Отправить сообщение другому пользователю
     async function sendNewMessageOtherUser(text) {
       const refForNewMessage = push(
-        ref(db, `/DBMessages/${OTHER_USER_UID}/dialogues/${MY_UID}/message`)
+        ref(
+          db,
+          `/DBMessages/${OTHER_USER_UID}/dialogues/${auth.currentUser.uid}/message`
+        )
       );
 
       await set(refForNewMessage, {
@@ -131,7 +147,10 @@ const TestPage = () => {
     // Отправить сообщение себе
     async function sendNewMessageToYourself(text) {
       const refForNewMessage = push(
-        ref(db, `/DBMessages/${MY_UID}/dialogues/${OTHER_USER_UID}/message`)
+        ref(
+          db,
+          `/DBMessages/${auth.currentUser.uid}/dialogues/${OTHER_USER_UID}/message`
+        )
       );
 
       await set(refForNewMessage, {
@@ -146,7 +165,7 @@ const TestPage = () => {
     async function changeFieldNotificationToTrue() {
       const updates = {};
       updates[
-        `/DBMessages/${OTHER_USER_UID}/dialogues/${MY_UID}/haveNewMessages`
+        `/DBMessages/${OTHER_USER_UID}/dialogues/${auth.currentUser.uid}/haveNewMessages`
       ] = true;
 
       await update(ref(db), updates);
@@ -170,27 +189,21 @@ const TestPage = () => {
     e.preventDefault();
 
     const response = await get(
-      ref(db, `/DBMessages/${OTHER_USER_UID}/dialogues/${MY_UID}`)
+      ref(db, `/DBMessages/${auth.currentUser.uid}/dialogues/${OTHER_USER_UID}`)
     );
 
     // console.log(response && response.val());
     Object.values(response.val().message).forEach((i) => console.log(i));
   };
 
-  // (e) Установка стату "в сети" или "не в сети"
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      user && setStatus("в сети");
-      user || setStatus("не зашли");
-    });
-  }, []);
-
   // (e) Загружаем сообщения с сервера 2 пользователей при первой загрузки
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const messageProcessing = (rawData) =>
-          Object.values(rawData.val().message);
+    return auth.onAuthStateChanged(async (user) => {
+      if (user && OTHER_USER_UID) {
+        console.log("start");
+        const messageProcessing = (rawData) => {
+          return rawData.val() ? Object.values(rawData.val().message) : [];
+        };
 
         const myMessages = new Promise((resolve, reject) => {
           onValue(
@@ -199,6 +212,7 @@ const TestPage = () => {
               `/DBMessages/${auth.currentUser.uid}/dialogues/${OTHER_USER_UID}`
             ),
             (snapshot) => {
+              console.log("Сообщения мои");
               const dataMessage = messageProcessing(snapshot);
               setMyMessagesList(dataMessage);
               resolve(dataMessage);
@@ -213,6 +227,7 @@ const TestPage = () => {
               `/DBMessages/${OTHER_USER_UID}/dialogues/${auth.currentUser.uid}`
             ),
             (snapshot) => {
+              console.log("Сообщения пользователя");
               const dataMessage = messageProcessing(snapshot);
               setUserMessagesList(dataMessage);
               resolve(dataMessage);
@@ -220,16 +235,18 @@ const TestPage = () => {
           );
         });
 
+        console.log("Promise.all");
+
         const response = await Promise.all([myMessages, userMessages]);
 
-        const messagesUnion = [...response[0], ...response[1]];
+        const messagesUnion = getConcatArray(response[0], response[1]);
 
         const sortMessage = getSortMessage(messagesUnion);
 
         setAllMessages(sortMessage);
       }
     });
-  }, []);
+  }, [OTHER_USER_UID]);
 
   // (e) Получние новых сообщений реалтайм
   useEffect(() => {
@@ -271,18 +288,47 @@ const TestPage = () => {
         <div className={styles.dataBase}>
           <h1 className={styles.title}>Message</h1>
 
-          <span className={styles.titleUser}>
-            Вы:{" "}
-            <span
-              className={
-                status === "в сети"
-                  ? styles.titleUserStatusOnline
-                  : styles.titleUserStatusOffline
-              }
-            >
-              {status}
+          <div className={styles.statusBar}>
+            <span className={styles.titleUser}>
+              Вы:{" "}
+              <span
+                className={
+                  auth.currentUser
+                    ? styles.titleUserStatusOnline
+                    : styles.titleUserStatusOffline
+                }
+              >
+                {auth.currentUser ? auth.currentUser.email : "не в сети"}
+              </span>
             </span>
-          </span>
+            <div className={styles.userGroup}>
+              <div>Кому отправить сообщения:</div>
+              <button
+                type="button"
+                onClick={() =>
+                  setOTHER_USER_UID("Od7R2Epsz0QzDKdRp0Jie52CLOr2")
+                }
+              >
+                test@gg.gg
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setOTHER_USER_UID("AGgmP5HBP2dXyJyG4ZHLKWT8IFf2")
+                }
+              >
+                test2@gg.gg
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setOTHER_USER_UID("aHWYmcdJUJV8QVQbYMlMzCgXF122")
+                }
+              >
+                test3@gg.gg
+              </button>
+            </div>
+          </div>
 
           <div className={styles.dialog}>
             <div className={styles.chat}>
@@ -303,13 +349,14 @@ const TestPage = () => {
                   }
                 })}
             </div>
-            <div className={styles.inputBlock}>
-              <textarea
-                value={textMessage}
-                onChange={handlerMessage}
-                className={styles.inputText}
-              ></textarea>
-            </div>
+          </div>
+
+          <div className={styles.inputBlock}>
+            <textarea
+              value={textMessage}
+              onChange={handlerMessage}
+              className={styles.inputText}
+            ></textarea>
           </div>
 
           <div className={styles.btnBD}>
@@ -330,25 +377,3 @@ const TestPage = () => {
 };
 
 export { TestPage };
-
-// const dataForSendDB = {
-//   [OTHER_USER_UID]: {
-//     dialogues: {
-//       [MY_UID]: {
-//         haveNewMessages: true,
-//         message: [
-//           {
-//             date: DATE.toISOString(),
-//             dateAt: DATE.getTime(),
-//             text: "Привет!",
-//           },
-//           {
-//             date: DATE.toISOString(),
-//             dateAt: DATE.getTime(),
-//             text: "Как дела?",
-//           },
-//         ],
-//       },
-//     },
-//   },
-// };

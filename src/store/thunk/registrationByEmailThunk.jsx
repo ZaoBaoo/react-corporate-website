@@ -17,6 +17,7 @@ const registrationByEmailThunk = (payload) => {
     } catch (error) {
       console.log(error.message);
       let messageError;
+      dispatch(registrationAction.setError(""));
 
       switch (error.message) {
         case "Firebase: Error (auth/email-already-in-use).":

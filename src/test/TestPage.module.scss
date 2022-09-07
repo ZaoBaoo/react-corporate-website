@@ -70,6 +70,38 @@
             padding: 1rem;
             border: 2px dotted #919191;
 
+            .statusBar {
+                display: flex;
+                justify-content: space-between;
+
+                .userGroup {
+                    button {
+                        display: inline-block;
+                        background-color: #4795d4;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+
+            .inputBlock {
+                .inputText {
+                    width: 100%;
+                    min-height: 6rem;
+                    resize: none;
+                    background-color: #879cff;
+                    padding: 1rem;
+                    font-size: 1.2rem;
+                    color: #ffffff;
+                    border-color: #919191;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
             .dialog {
                 display: flex;
                 flex-direction: column;
@@ -77,29 +109,11 @@
 
                 padding: 2rem 1.5rem 1rem;
                 width: 35rem;
-                min-height: 35rem;
+                height: 35rem;
                 background-color: #828cb1;
                 font-size: 1.2rem;
                 font-weight: 500;
-
-                .inputBlock {
-                    .inputText {
-                        width: 100%;
-                        min-height: 6rem;
-                        resize: none;
-                        background-color: #879cff;
-                        padding: 1rem;
-                        font-size: 1.2rem;
-                        color: #ffffff;
-                        border-color: #919191;
-                        font-size: 1.2rem;
-                        font-weight: 500;
-
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                }
+                overflow-y: auto;
 
                 .leftUser,
                 .rightUser {
