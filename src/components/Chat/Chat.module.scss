@@ -12,11 +12,12 @@
         position: relative;
         
         .chatMessages {
-            height: 100%;
-            // height: 80.55555%;
+            height: calc(100% - 14rem);
+
             background: #C0C0C0;
             padding: 1rem 1.5rem;
             overflow: auto;
+
             &::-webkit-scrollbar {
                 width: 7px;
                 background: #444d73;
@@ -30,8 +31,9 @@
                 background: #C0C0C0;
             }
 
-            @media (max-width: 814px) {   
-                padding: 7rem 1rem 9.3rem;
+            @media (max-width: 814px) {
+                height: calc(100% - 14rem);
+                // height: calc(calc(var(--vh, 1vh) * 100) - 14rem);
             }
 
             .chatMessagesWrapper {
@@ -42,13 +44,13 @@
             background: #ABABAB;
             border-top: 2px solid #A0A0A0;
 
-            @media (max-width: 814px) {
-                position: fixed;
-                width: 100%;
-                bottom: 0;
-                left: 0;
-                right: 0;
-            }
+            // @media (max-width: 814px) {
+            //     position: fixed;
+            //     width: 100%;
+            //     bottom: 0;
+            //     left: 0;
+            //     right: 0;
+            // }
 
         }
     }

@@ -1,6 +1,8 @@
 .blockWrapper {
     width: 100vw;
-    height: 100vh;
+    
+    // height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 
     display: flex;
     justify-content: center;
@@ -12,7 +14,10 @@
 
     @media (max-width: 480px) {
         width: 100vw;
-        height: 100vh;
+
+        // height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+
         display: block;
         position: static;
         img {
@@ -25,6 +30,13 @@
         top: 0;
     }
 
+}
+
+@-moz-document url-prefix() {
+    .blockWrapper {
+      height: 100vh;
+      overflow-y: scroll;
+    }
 }
 
 .modal {
@@ -59,7 +71,9 @@
 
     @media (max-width: 480px) {
         width: 100%;
-        height: 100%;
+        // height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+
         border-radius: 0;
         padding-top: 14rem;
         box-shadow: none;
@@ -67,5 +81,12 @@
 
     @media (max-height: 560px) {
         padding-top: 7rem;
+    }
+}
+
+@-moz-document url-prefix() {
+    .modal {
+      height: 100vh;
+      overflow-y: scroll;
     }
 }

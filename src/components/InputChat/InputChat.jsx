@@ -64,14 +64,14 @@ const InputChat = () => {
 
   return (
     <div className={styles.chatInputWrapper}>
-      <input
+      <textarea
         value={textMessage}
         onChange={handlerMessage}
         placeholder="Напишите сообщение..."
         type="text"
         ref={inputRef}
       />
-      <button ref={btnRef} onClick={sendMessage}></button>
+      <button type="button" ref={btnRef} onClick={sendMessage}></button>
     </div>
   );
 };

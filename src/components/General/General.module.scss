@@ -1,21 +1,26 @@
 .generalBlock {
     position: relative;
 
+    // height: calc(var(--vh, 1vh) * 100);
+    // height: calc(100vh - 22rem);
+
     .generalContent {
         display: flex;
-        height: calc(100vh - 22rem);
+        // height: calc(100vh - 22rem);
+        height: calc(calc(var(--vh, 1vh) * 100) - 22rem);
 
         @media (max-width: 813px) {
-            height: calc(100vh - 16rem);
+            // height: calc(100vh - 16rem);
+            height: calc(calc(var(--vh, 1vh) * 100) - 16rem);
         }
 
         @media (max-width: 425px) {
             display: block;
-            // height: calc(100vh - 22rem);
         }
 
         @media (max-width: 370px) {
-            height: calc(100vh - 14rem);
+            // height: calc(100vh - 14rem);
+            height: calc(calc(var(--vh, 1vh) * 100) - 14rem);
         }
     }
 

@@ -31,11 +31,13 @@ import { TestPageTwo } from "./test/TestPageTwo";
 import { useUserDB } from "./hooks/useUserDB";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useAvatar } from "./hooks/useAvatar";
+import { useFixVH } from "./hooks/useFixVH";
 //
 
 function App() {
   useUserDB();
   useLocalStorage();
+  useFixVH();
   // useAvatar();
   //
   const { isLoggedIn } = useSelector((state) => state.login);
