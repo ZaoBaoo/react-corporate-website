@@ -35,7 +35,7 @@ const filterForSearch = (text, users, mode) => {
 // Сортирует удаляя из списка пользователей авторизованного пользователя
 const sortUsers = (users) => {
   return Object.values(users).filter(
-    (user) => user.uid !== auth.currentUser.uid
+    (user) => user.uid !== auth?.currentUser?.uid
   );
 };
 
@@ -60,8 +60,8 @@ const LeftSide = () => {
   // Отрисовка по фильтру и поиску
   useEffect(() => {
     if (textForSearch) {
-      const sortUsers = filterForSearch(textForSearch, usersData, searchMode);
-      setUsers(sortUsers);
+      const listUsers = filterForSearch(textForSearch, usersData, searchMode);
+      setUsers(listUsers);
       return;
     }
     textForSearch === "" && setUsers(sortUsers(usersData));

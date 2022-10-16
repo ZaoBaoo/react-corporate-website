@@ -86,7 +86,7 @@ const UserPhoto = ({ size, src, uid }) => {
       })}
     >
       <img src={src} alt="" className={styles.img} />
-      {size === "l" && auth.currentUser.uid === uid && (
+      {size === "l" && auth?.currentUser?.uid === uid && (
         <form onChange={formHandler}>
           <input
             ref={inputFile}

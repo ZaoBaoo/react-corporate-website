@@ -32,12 +32,7 @@
 
 }
 
-@-moz-document url-prefix() {
-    .blockWrapper {
-      height: 100vh;
-      overflow-y: scroll;
-    }
-}
+
 
 .modal {
     width: 42rem;
@@ -84,9 +79,16 @@
     }
 }
 
-@-moz-document url-prefix() {
-    .modal {
-      height: 100vh;
-      overflow-y: scroll;
-    }
-}
+// @-moz-document url-prefix() {
+//     .blockWrapper {
+//       height: 100vh;
+//       overflow-y: scroll;
+//     }
+// }
+
+// @-moz-document url-prefix() {
+//     .modal {
+//       height: 100vh;
+//       overflow-y: scroll;
+//     }
+// }

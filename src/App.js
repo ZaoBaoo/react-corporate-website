@@ -1,14 +1,17 @@
 import { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 // Store
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { userDBAction } from "./store/slice/userDBSlice";
+import { loginAction } from "./store/slice/loginSlice";
 
 // Firebase
 import { auth } from "./firebase";
 
 // Tool
 import { checkSessionTimeOut } from "./tool-function";
+import { checkAuthTime } from "./tool-function/checkAuthTime";
 
 // Layout
 import { Main } from "./components/layout/Main/Main";
@@ -30,7 +33,6 @@ import { TestPageTwo } from "./test/TestPageTwo";
 // HOOKs
 import { useUserDB } from "./hooks/useUserDB";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useAvatar } from "./hooks/useAvatar";
 import { useFixVH } from "./hooks/useFixVH";
 //
 
@@ -38,19 +40,40 @@ function App() {
   useUserDB();
   useLocalStorage();
   useFixVH();
-  // useAvatar();
-  //
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const { isLoggedIn } = useSelector((state) => state.login);
   const { editDisabled } = useSelector((state) => state.modalUser);
 
   // (e) Проверка. Прошел ли час с момента входа
   // Если прошло больше часа, произойдет выход
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    let resetTimer;
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        checkSessionTimeOut(user);
+        const timeAuth = user.reloadUserInfo.lastLoginAt;
+        resetTimer = setInterval(async () => {
+          const isAuthTimeValid = checkAuthTime(timeAuth);
+          if (!isAuthTimeValid) {
+            clearInterval(resetTimer);
+            await auth.signOut();
+            dispatch(userDBAction.clearUserData());
+            dispatch(loginAction.loginHandler(false));
+
+            // localStorage.setItem("isLoggedIn", false);
+            // navigate("/");
+            console.log("Вы разлогинены");
+            return;
+          }
+        }, 5000);
       }
     });
+    return () => {
+      unsubscribe();
+      clearInterval(resetTimer);
+    };
   }, []);
 
   //
