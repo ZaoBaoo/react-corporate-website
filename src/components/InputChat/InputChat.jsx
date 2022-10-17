@@ -18,7 +18,7 @@ const InputChat = () => {
   const inputRef = useRef(null);
   const btnRef = useRef(null);
 
-  // (f) Обработчик сообщений
+  // (f) Обработчик сообщений [go]
   const handlerMessage = (e) => {
     setTextMessage(e.target.value);
   };
