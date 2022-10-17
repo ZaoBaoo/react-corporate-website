@@ -57,13 +57,13 @@
 
     // }
 
-    textarea {
+    input {
         height: 4rem;
         width: 100%;
         background: transparent;
         border: 1px solid #EBEBEB;
         border-radius: 6px;
-        padding: 1rem 2.5rem 0;
+        padding: 0 2rem;
         resize: none;
         overflow: auto;
 
@@ -119,6 +119,8 @@
         background-color: transparent;
         background-repeat: no-repeat;
         background-size: 100%;
+
+        cursor: pointer;
 
         &:hover {
             background-color: #afafaf;

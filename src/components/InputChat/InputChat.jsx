@@ -1,17 +1,17 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from 'react';
 
 // Firebase
-import { push, ref, set } from "firebase/database";
-import { auth, db } from "../../firebase";
+import { push, ref, set } from 'firebase/database';
+import { auth, db } from '../../firebase';
 
 // Styles
-import styles from "./InputChat.module.scss";
+import styles from './InputChat.module.scss';
 
 // Store
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 const InputChat = () => {
-  const [textMessage, setTextMessage] = useState("");
+  const [textMessage, setTextMessage] = useState('');
 
   const { uidForShowChat } = useSelector((state) => state.modalUser);
 
@@ -42,36 +42,43 @@ const InputChat = () => {
         from: auth.currentUser.uid,
         date: DATE.toISOString(),
         dateAt: DATE.getTime(),
-        text: text,
+        text: text
       });
     }
 
-    sendNewMessageToYourself(textMessage);
+    await sendNewMessageToYourself(textMessage);
     inputRef.current.focus();
-    setTextMessage("");
+    setTextMessage('');
   };
 
   useEffect(() => {
     const input = inputRef.current;
+
     const checkKeyDown = (e) => {
-      if (e.key === "Enter") {
+      if (e.key === 'Enter') {
         btnRef.current.click();
       }
     };
-    inputRef.current.addEventListener("keydown", checkKeyDown);
-    return () => input.removeEventListener("keydown", checkKeyDown);
+
+    input.addEventListener('keydown', checkKeyDown);
+    return () => input.removeEventListener('keydown', checkKeyDown);
   }, []);
 
   return (
     <div className={styles.chatInputWrapper}>
-      <textarea
+      <input
         value={textMessage}
         onChange={handlerMessage}
         placeholder="Напишите сообщение..."
         type="text"
         ref={inputRef}
       />
-      <button type="button" ref={btnRef} onClick={sendMessage}></button>
+      <button
+        aria-readonly={true}
+        type="button"
+        ref={btnRef}
+        onClick={sendMessage}
+      ></button>
     </div>
   );
 };
