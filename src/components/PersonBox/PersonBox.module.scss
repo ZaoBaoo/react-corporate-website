@@ -1,64 +1,64 @@
 .personBox {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #c1c1c1;
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+
+  .infoUser {
     display: flex;
-    justify-content: flex-start;
-    border-bottom: 1px solid #C1C1C1;
-    cursor: pointer;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    transition: background 0.15s ease-in-out;
 
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-tap-highlight-color: transparent;
+    // &:hover {
+    //     background: #525b86;
+    // }
 
-      
-    .infoUser {
-        display: flex;
-        padding: 1.5rem 0 1.5rem 1.5rem;
-        transition: background 0.15s ease-in-out;
+    flex-grow: 10;
 
-        // &:hover {
-        //     background: #525b86;
-        // }
+    .infoName {
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.4rem;
 
-        flex-grow: 10;
+      max-width: 15rem;
+      overflow-x: hidden;
+      span {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
 
-        .infoName {
-            padding-left: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.4rem;
+        letter-spacing: 0.05rem;
 
-            max-width: 15rem;
-            overflow-x: hidden;
-            span {
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 1.4rem;
-                line-height: 1.7rem;
+        color: #ffffff;
+      }
 
-                letter-spacing: 0.05rem;
+      .infoDepartment {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        letter-spacing: 0.05em;
 
-                color: #FFFFFF;
-            }
-
-            .infoDepartment {
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 1.0rem;
-                line-height: 1.2rem;
-                letter-spacing: 0.05em;
-                
-                color: #A7B2DC;
-            }
-        }
+        color: #a7b2dc;
+      }
     }
+  }
 
-    .messageUserIcon {
-        padding: 3rem;
-        transition: background 0.15s ease-in-out;
+  .messageUserIcon {
+    padding: 3rem;
+    transition: background 0.15s ease-in-out;
+    background: #3e466a;
 
-        &:hover {
-            background: #525b86;
-        }
+    &:hover {
+      background: #444d73;
     }
+  }
 }

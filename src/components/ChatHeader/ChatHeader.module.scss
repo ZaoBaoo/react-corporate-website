@@ -1,84 +1,89 @@
 .chatHeader {
-    width: 100%;
+  width: 100%;
 
-    min-height: 6rem;
+  min-height: 6rem;
 
-    background: #8A94C6;
+  margin-bottom: 0;
+
+  background: #8a94c6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .chatHeaderLeft {
+    width: 12.5rem;
+    height: 100%;
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    position: relative;
 
-
-    // @media (max-width: 814px) {
-    //     position: fixed;
-    //     width: 100%;
-    //     top: 0;
-    //     left: 0;
-    //     right: 0;
-    //     z-index: 20;
-    // }
-
-    .chatHeaderLeft {
-        width: 12.5rem;
-        height: 100%;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        position: relative;
-
-        &:hover {
-            background: #969ec9;
-        }
-
-        &::before {
-            content: '';
-        }
-        .closeChat {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-            height: 100%;
-
-            .closeChatImg {
-
-            }
-            .closeChatText {
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 20px;                        
-                letter-spacing: 0.05em;
-                color: #D1D1D1;
-            }
-        }
+    &:hover {
+      background: #969ec9;
     }
-    .chatHeaderMiddle {
+
+    &::before {
+      content: '';
+    }
+    .closeChat {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      height: 100%;
+
+      .closeChatImg {
+      }
+      .closeChatText {
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
         line-height: 20px;
         letter-spacing: 0.05em;
-        color: #FFFFFF;
-    }
-    .chatHeaderRight {
-        padding: 0 2.5rem;
+        color: #d1d1d1;
 
-        .wrapperRight {
-            width: 4.5rem;
-            height: 4.5rem;
-            border-radius: 50%;
-            overflow: hidden;
-
-            img {
-                
-                object-fit: cover;
-                height: 100%;
-                width: 100%;
-                image-rendering: -webkit-optimize-contrast;
-            }
+        @media (max-width: 400px) {
+          display: none;
         }
-
+      }
     }
+
+    @media (max-width: 400px) {
+      width: 6.5rem;
+    }
+  }
+  .chatHeaderMiddle {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @media (max-width: 400px) {
+      font-size: 15px;
+    }
+  }
+  .chatHeaderRight {
+    padding: 0 2.5rem;
+
+    .wrapperRight {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        image-rendering: -webkit-optimize-contrast;
+      }
+    }
+  }
 }

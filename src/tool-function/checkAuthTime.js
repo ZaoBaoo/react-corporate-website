@@ -1,7 +1,7 @@
 const checkAuthTime = (authTime) => {
   const timeOut = new Date().getTime() - authTime;
   // const authDuration = 3600000;
-  const authDuration = 300000;
+  const authDuration = 24 * 60 * 60 * 1000;
 
   if (timeOut > authDuration) {
     return false;

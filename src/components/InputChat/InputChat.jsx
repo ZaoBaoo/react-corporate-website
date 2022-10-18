@@ -10,7 +10,7 @@ import styles from './InputChat.module.scss';
 // Store
 import { useSelector } from 'react-redux';
 
-const InputChat = () => {
+const InputChat = ({ handlerScroll }) => {
   const [textMessage, setTextMessage] = useState('');
 
   const { uidForShowChat } = useSelector((state) => state.modalUser);
@@ -47,7 +47,6 @@ const InputChat = () => {
     }
 
     await sendNewMessageToYourself(textMessage);
-    inputRef.current.focus();
     setTextMessage('');
   };
 
@@ -61,7 +60,16 @@ const InputChat = () => {
     };
 
     input.addEventListener('keydown', checkKeyDown);
+
     return () => input.removeEventListener('keydown', checkKeyDown);
+  }, []);
+
+  useEffect(() => {
+    btnRef.current.onmousedown = (e) => {
+      if (document.activeElement === inputRef.current) {
+        e.preventDefault();
+      }
+    };
   }, []);
 
   return (
@@ -72,13 +80,9 @@ const InputChat = () => {
         placeholder="Напишите сообщение..."
         type="text"
         ref={inputRef}
+        onFocus={() => setTimeout(handlerScroll, 250)}
       />
-      <button
-        aria-readonly={true}
-        type="button"
-        ref={btnRef}
-        onClick={sendMessage}
-      ></button>
+      <button type="button" ref={btnRef} onClick={sendMessage}></button>
     </div>
   );
 };
