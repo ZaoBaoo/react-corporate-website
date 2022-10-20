@@ -38,15 +38,17 @@
 @font-face {
   font-family: 'Material Icons';
   font-display: block;
-  src: url('../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
-  url('../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff');
+  src: url('../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2')
+      format('woff2'),
+    url('../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff')
+      format('woff');
 }
 
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -69,10 +71,10 @@
 /*  */
 /*  */
 
-
 html,
 body,
-.root {
+.root,
+.app {
   font-size: 10px;
   height: 100%;
   width: 100%;
@@ -94,7 +96,6 @@ a {
   text-decoration: none;
 }
 
-
 body {
   background: var(--main-bg-color);
   /* background: white; */
@@ -105,14 +106,13 @@ body {
 /* ============== */
 
 :root {
-  --main-bg-color: #535D81;
+  --main-bg-color: #535d81;
   --modal-bg-color: #32384d;
 }
 
 /* ============== */
 /* MEDIA */
 /* ============== */
-
 
 @media (max-width: 480px) {
   html {
@@ -126,8 +126,8 @@ body {
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
 input[data-autocompleted] {
-background-color: transparent !important;
+  background-color: transparent !important;
 }

@@ -1,18 +1,18 @@
-import { useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 // Store
-import { useDispatch, useSelector } from "react-redux";
-import { registrationAction } from "../../../store/slice/registrationSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { registrationAction } from '../../../store/slice/registrationSlice';
 
 // Components
-import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
-import { InputLogin } from "../../InputLogin";
-import { TextLogin } from "../../TextLogin";
-import { ModalAndWrapper } from "./ModalAndWrapper";
+import { ButtonLogin } from '../../ButtonLogin/';
+import { InputLogin } from '../../InputLogin';
+import { TextLogin } from '../../TextLogin';
+import { ModalAndWrapper } from './ModalAndWrapper';
 
-import { textVal } from "./Validate";
+import { textVal } from './Validate';
 
 const RegistrationOne = (props) => {
   const refButtonNextPage = useRef(null);
@@ -27,10 +27,10 @@ const RegistrationOne = (props) => {
   const {
     register,
     formState: { errors },
-    handleSubmit,
+    handleSubmit
   } = useForm({
-    mode: "onSubmit",
-    defaultValues: { firstName: firstName, lastName: lastName },
+    mode: 'onSubmit',
+    defaultValues: { firstName: firstName, lastName: lastName }
   });
 
   // Dispatch
@@ -45,7 +45,7 @@ const RegistrationOne = (props) => {
   // (f)
   const nextStep = (data) => {
     saveFormInput(data);
-    next("/registrationtwo");
+    next('/registrationtwo');
   };
 
   return (
@@ -75,9 +75,9 @@ const RegistrationOne = (props) => {
         />
         <div
           style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-around",
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-around'
           }}
         >
           <Link to="/login">

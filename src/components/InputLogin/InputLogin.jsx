@@ -1,5 +1,5 @@
-import cn from "classnames";
-import styles from "./InputLogin.module.scss";
+import cn from 'classnames';
+import styles from './InputLogin.module.scss';
 
 const InputLogin = ({
   label,
@@ -10,14 +10,14 @@ const InputLogin = ({
   val,
   iconEyeToggle,
   errors,
-  refButtonNextPage,
+  refButtonNextPage = Function.prototype,
   ...props
 }) => {
   return (
     <div
       className={cn(styles.inputReset, {
-        [styles.inputBorder]: mode === "inputBorder",
-        [styles.inputLine]: mode === "inputLine",
+        [styles.inputBorder]: mode === 'inputBorder',
+        [styles.inputLine]: mode === 'inputLine'
       })}
     >
       <label>
@@ -26,7 +26,7 @@ const InputLogin = ({
           type={type}
           {...props}
           onKeyPress={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               e.preventDefault();
               refButtonNextPage.current.click();
             }
@@ -37,7 +37,7 @@ const InputLogin = ({
         <span>{label}</span>
         {errors?.[name] && (
           <div className={styles.error}>
-            {errors?.[name].message || "Заполнено неправильно"}
+            {errors?.[name].message || 'Заполнено неправильно'}
           </div>
         )}
       </label>

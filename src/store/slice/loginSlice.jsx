@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const checkLocalStorageAuth = () => {
-  const value = JSON.parse(localStorage.getItem("isLoggedIn"));
+  const value = JSON.parse(localStorage.getItem('isLoggedIn'));
   if (value) {
     return JSON.parse(value);
   }
@@ -11,10 +11,11 @@ const checkLocalStorageAuth = () => {
 const initialLoginState = {
   isLoggedIn: checkLocalStorageAuth(),
   errorLogin: {},
+  forgotPasswordComplete: null
 };
 
 const loginSlice = createSlice({
-  name: "login",
+  name: 'login',
   initialState: initialLoginState,
   reducers: {
     // Login
@@ -29,7 +30,11 @@ const loginSlice = createSlice({
     clearErrorHandler(state) {
       state.errorLogin = {};
     },
-  },
+    //  Forgot Password
+    setForgotPasswordComplete(state, action) {
+      state.forgotPasswordComplete = action.payload;
+    }
+  }
 });
 
 // Экспортируем ACTION

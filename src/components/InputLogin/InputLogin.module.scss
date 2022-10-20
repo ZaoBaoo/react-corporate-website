@@ -1,148 +1,148 @@
 .inputReset {
-    input {
-        outline: none;
-        border: none;
-    }  
+  input {
+    outline: none;
+    border: none;
+  }
 }
 
 // 1 One
 
 .inputBorder {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
-    label {
-        position: relative;
+  label {
+    position: relative;
+  }
+
+  input {
+    width: 35rem;
+    height: 4.2rem;
+
+    border: 0.1rem solid transparent;
+    box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 0 1.5rem;
+
+    background: rgba(0, 0, 0, 0.3);
+    color: #b4b4b4;
+    font-size: 1.7rem;
+
+    transition: border 0.2s ease-in-out;
+
+    &:active,
+    &:focus {
+      border: 0.1rem solid #8d8d8d;
     }
+  }
 
-    input {
-        width: 35rem;
-        height: 4.2rem;
+  span {
+    position: absolute;
+    top: -3.9rem;
+    left: 1.2rem;
 
-        border: 0.1rem solid transparent;
-        box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.15);
-        border-radius: 1rem;
-        padding: 0 1.5rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    color: #b4b4b4;
+  }
 
-        background: rgba(0, 0, 0, 0.3);
-        color: #B4B4B4;
-        font-size: 1.7rem;
-
-        transition: border 0.2s ease-in-out;
-
-        &:active,
-        &:focus {
-            border: 0.1rem solid #8d8d8d;
-        }
-    }
-    
-
-    span {
-        position: absolute;
-        top: -3.9rem;
-        left: 1.2rem;
-
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 1.5rem;
-        line-height: 1.7rem;
-        color: #B4B4B4;
-    }
-
-    .error {
-        font-size: 1.2rem;
-        color: #ff5c5c;
-        position: absolute;
-        top: 3rem;
-        left: 0.5rem;
-    }
+  .error {
+    font-size: 1.2rem;
+    color: #ff5c5c;
+    position: absolute;
+    top: 3rem;
+    left: 0.5rem;
+  }
 }
 
 // 2 Two
 
 .inputLine {
-    margin-top: 0.5rem;
-    margin-bottom: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
+
+  i {
+    color: #00000075;
+    font-size: 2.8rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 1.2rem;
+    cursor: pointer;
+
+    // При нажатии на моб. элемент не выделяется синим
+    -webkit-tap-highlight-color: transparent;
+
+    // чтобы элемент не выделялся на двойной таб
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  label {
     position: relative;
+    cursor: text;
 
-    &:last-of-type {
-        margin-bottom: 1rem;
+    // чтобы элемент не выделялся на двойной таб
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input {
+    width: 35rem;
+    height: 4.2rem;
+
+    background: rgba(255, 0, 0, 0);
+    color: #e7e7e7;
+    font-size: 1.7rem;
+
+    border-bottom: 0.1rem solid #b4b4b4;
+    transition: all 0.2s ease-in-out;
+
+    &:focus + span,
+    &:valid + span {
+      font-size: 1.2rem;
+      color: #7e7e7e;
+
+      top: -2.8rem;
+      left: -0.1rem;
     }
-
-    i {
-        color: #00000075;
-        font-size: 2.8rem;
-        position: absolute;
-        top: 0.5rem;
-        right: 1.2rem;
-        cursor: pointer;
-
-        // При нажатии на моб. элемент не выделяется синим
-        -webkit-tap-highlight-color: transparent;
-
-        // чтобы элемент не выделялся на двойной таб
-        -moz-user-select: -moz-none;
-        -o-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
+    &:focus {
+      border-bottom: 0.1rem solid #ffc7ff;
     }
+  }
 
-    label {
-        position: relative;
-        cursor: text;
+  span {
+    position: absolute;
+    top: -0.4rem;
+    left: 0;
 
-        // чтобы элемент не выделялся на двойной таб
-        -moz-user-select: -moz-none;
-        -o-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-    }
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
+    color: #b4b4b4;
 
-    input {
-        width: 35rem;
-        height: 4.2rem;
+    transition: all 0.2s ease-in-out;
+  }
 
-        background: rgba(255, 0, 0, 0);
-        color: #e7e7e7;
-        font-size: 1.7rem;
-
-        border-bottom: 0.1rem solid #B4B4B4;
-
-        &:focus + span,
-        &:valid + span {
-            font-size: 1.2rem;
-            color: #7e7e7e;
-
-            top: -2.8rem;
-            left: -0.1rem;
-        }
-        &:focus {
-            border-bottom: 0.1rem solid #ffc7ff;
-        }
-    }
-
-    span {
-        position: absolute;
-        top: -0.4rem;
-        left: 0;
-
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 1.7rem;
-        line-height: 1.7rem;
-        color: #B4B4B4;
-
-        transition: all 0.2s ease-in-out;
-    }
-
-    .error {
-        font-size: 1.25rem;
-        color: #ff5c5c;
-        position: absolute;
-        top: 3rem;
-        left: 0.5rem;
-    }
+  .error {
+    font-size: 1.25rem;
+    color: #ff5c5c;
+    position: absolute;
+    top: 3rem;
+    left: 0.5rem;
+  }
 }

@@ -1,20 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
-import { loginByEmailThunk } from "../../../store/thunk/loginByEmailThunk";
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { loginByEmailThunk } from '../../../store/thunk/loginByEmailThunk';
 
 // Action
-import { loginAction } from "../../../store/slice/loginSlice";
+import { loginAction } from '../../../store/slice/loginSlice';
 
 // Components
-import { ModalAndWrapper } from "./ModalAndWrapper";
-import { InputLogin } from "../../InputLogin";
-import { TitleLogin } from "../../TitleLogin";
-import { TextLogin } from "../../TextLogin";
-import { ButtonLogin } from "../../ButtonLogin";
+import { ModalAndWrapper } from './ModalAndWrapper';
+import { InputLogin } from '../../InputLogin';
+import { TitleLogin } from '../../TitleLogin';
+import { TextLogin } from '../../TextLogin';
+import { ButtonLogin } from '../../ButtonLogin';
 
 // Hook-form
-import { emailVal, passVal } from "./Validate";
+import { emailVal, passVal } from './Validate';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -32,8 +32,8 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
     setError,
-    clearErrors,
-  } = useForm({ mode: "onSubmit" });
+    clearErrors
+  } = useForm({ mode: 'onSubmit' });
 
   // (f) АВТОРИЗАЦИЯ
   const handlerLogin = (data) => {
@@ -79,7 +79,11 @@ const Login = () => {
   }, [errorLogin, clearErrors]);
 
   return (
-    <form action="" onSubmit={handleSubmit(handlerLogin)}>
+    <form
+      action=""
+      onSubmit={handleSubmit(handlerLogin)}
+      style={{ width: '100%', height: '100%' }}
+    >
       <ModalAndWrapper>
         <TitleLogin title="Корпоративная сеть" />
         <InputLogin
@@ -93,7 +97,11 @@ const Login = () => {
           autoFocus
           refButtonNextPage={refButtonNextPage}
         />
-        <TextLogin text="Забыли пароль?" position="right" />
+        <TextLogin
+          linkedText="Забыли пароль?"
+          position="right"
+          linkedTo="/forgot-password"
+        />
         <InputLogin
           errors={errors}
           register={register}

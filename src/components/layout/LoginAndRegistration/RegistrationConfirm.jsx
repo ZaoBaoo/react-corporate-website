@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 // Store
-import { useSelector, useDispatch } from "react-redux";
-import { registrationAction } from "../../../store/slice/registrationSlice";
-import { registrationByEmailThunk } from "../../../store/thunk/registrationByEmailThunk";
+import { useSelector, useDispatch } from 'react-redux';
+import { registrationAction } from '../../../store/slice/registrationSlice';
+import { registrationByEmailThunk } from '../../../store/thunk/registrationByEmailThunk';
 
 // Components
-import { TitleLogin } from "../../TitleLogin";
-import { ModalAndWrapper } from "./ModalAndWrapper";
-import { InputLogin } from "../../InputLogin";
-import { TextLogin } from "../../TextLogin";
-import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
+import { TitleLogin } from '../../TitleLogin';
+import { ModalAndWrapper } from './ModalAndWrapper';
+import { InputLogin } from '../../InputLogin';
+import { TextLogin } from '../../TextLogin';
+import { ButtonLogin } from '../../ButtonLogin/';
 
 const RegistrationConfirm = () => {
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const RegistrationConfirm = () => {
     email,
     phoneNumber,
     password,
-    errorRegistration,
+    errorRegistration
   } = useSelector((state) => state.registration);
 
   const { isLoggedIn } = useSelector((state) => state.login);

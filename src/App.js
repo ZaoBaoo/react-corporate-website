@@ -1,39 +1,40 @@
-import { useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 // Store
-import { useSelector, useDispatch } from "react-redux";
-import { userDBAction } from "./store/slice/userDBSlice";
-import { loginAction } from "./store/slice/loginSlice";
+import { useSelector, useDispatch } from 'react-redux';
+import { userDBAction } from './store/slice/userDBSlice';
+import { loginAction } from './store/slice/loginSlice';
 
 // Firebase
-import { auth } from "./firebase";
+import { auth } from './firebase';
 
 // Tool
-import { checkSessionTimeOut } from "./tool-function";
-import { checkAuthTime } from "./tool-function/checkAuthTime";
+import { checkAuthTime } from './tool-function/checkAuthTime';
 
 // Layout
-import { Main } from "./components/layout/Main/Main";
+import { Main } from './components/layout/Main/Main';
 import {
   Login,
   RegistrationOne,
   RegistrationTwo,
   RegistrationThree,
   RegistrationConfirm,
-} from "./components/layout/LoginAndRegistration";
+  ForgotPassword,
+  ResetPasswordComplete
+} from './components/layout/LoginAndRegistration';
 
 // Error
-import { Erorr } from "./components/Erorr";
+import { ErrorPage } from './components/ErrorPage';
 
 // TEST
-import { TestPage } from "./test/TestPage";
-import { TestPageTwo } from "./test/TestPageTwo";
+import { TestPage } from './test/TestPage';
+import { TestPageTwo } from './test/TestPageTwo';
 
 // HOOKs
-import { useUserDB } from "./hooks/useUserDB";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useFixVH } from "./hooks/useFixVH";
+import { useUserDB } from './hooks/useUserDB';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { useFixVH } from './hooks/useFixVH';
 //
 
 function App() {
@@ -41,7 +42,6 @@ function App() {
   useLocalStorage();
   useFixVH();
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { isLoggedIn } = useSelector((state) => state.login);
@@ -62,9 +62,7 @@ function App() {
             dispatch(userDBAction.clearUserData());
             dispatch(loginAction.loginHandler(false));
 
-            // localStorage.setItem("isLoggedIn", false);
-            // navigate("/");
-            console.log("Вы разлогинены");
+            console.log('Вы разлогинены');
             return;
           }
         }, 5000);
@@ -80,7 +78,7 @@ function App() {
   return (
     <div
       className="app"
-      style={editDisabled ? null : { pointerEvents: "none" }}
+      style={editDisabled ? null : { pointerEvents: 'none' }}
     >
       <Routes>
         <Route
@@ -90,6 +88,16 @@ function App() {
         <Route
           path="/login"
           element={isLoggedIn ? <Navigate replace to="/" /> : <Login />}
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            isLoggedIn ? <Navigate replace to="/" /> : <ForgotPassword />
+          }
+        />
+        <Route
+          path="/reset-password-complete"
+          element={<ResetPasswordComplete />}
         />
         <Route
           path="/registrationone"
@@ -117,7 +125,7 @@ function App() {
         />
         <Route path="/testPage" element={<TestPage />} />
         <Route path="/testPageTwo" element={<TestPageTwo />} />
-        <Route path="*" element={<Erorr />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
