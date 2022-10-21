@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // Store
-import { modalUserAction } from "../../store/slice/modalUser";
-import { useSelector, useDispatch } from "react-redux";
+import { modalUserAction } from '../../store/slice/modalUser';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { UserPhoto } from "../UserPhoto";
-import photo from "../../img/userIcon.svg";
-import { InputPage } from "../InputPage";
+import { UserPhoto } from '../UserPhoto';
+import photo from '../../img/userIcon.svg';
+import { InputPage } from '../InputPage';
 
 // Style
-import styles from "./PageUser.module.scss";
+import styles from './PageUser.module.scss';
 
 // Thunk
-import { updateUserDataThunk } from "../../store/thunk/updateUserDataThunk";
+import { updateUserDataThunk } from '../../store/thunk/updateUserDataThunk';
 
 // Firebase
-import { auth } from "../../firebase";
+import { auth } from '../../firebase';
 
 const PageUser = () => {
-  const [currentUser, setCurrentUser] = useState("");
-  const [fullName, setFullName] = useState("");
+  const [currentUser, setCurrentUser] = useState('');
+  const [fullName, setFullName] = useState('');
   const [showBtnClose, setShowBtnClose] = useState(false);
 
   const { uidForShowUserPage, editDisabled } = useSelector(
@@ -32,22 +32,22 @@ const PageUser = () => {
 
   const closeModal = () => {
     dispatch(modalUserAction.setShowModal(false));
-    dispatch(modalUserAction.setUIDForShowUserPage(""));
+    dispatch(modalUserAction.setUIDForShowUserPage(''));
   };
 
   const saveNewDataForInput = (e) => {
-    const dataId = e.target.dataset["id"];
+    const dataId = e.target.dataset['id'];
     const copyObj = JSON.parse(JSON.stringify(currentUser));
 
-    // Контроль импута с именем
-    if (dataId === "fullName") {
-      const splitFullName = e.target.value.split(" ");
+    // Контроль input с именем
+    if (dataId === 'fullName') {
+      const splitFullName = e.target.value.split(' ');
       if (splitFullName.length > 2) {
         return;
       }
       setFullName(e.target.value);
-      copyObj.firstName = splitFullName[0] || "";
-      copyObj.lastName = splitFullName[1] || "";
+      copyObj.firstName = splitFullName[0] || '';
+      copyObj.lastName = splitFullName[1] || '';
       setCurrentUser({ ...copyObj });
       return;
     }

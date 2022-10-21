@@ -1,22 +1,22 @@
-import { useEffect, useRef } from "react";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 // Store
-import { useDispatch, useSelector } from "react-redux";
-import { registrationAction } from "../../../store/slice/registrationSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { registrationAction } from '../../../store/slice/registrationSlice';
 // Yup
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 // Components
-import { ButtonLogin } from "../../ButtonLogin/ButtonLogin";
-import { InputLogin } from "../../InputLogin";
-import { TextLogin } from "../../TextLogin";
-import { ModalAndWrapper } from "./ModalAndWrapper";
+import { ButtonLogin } from '../../ButtonLogin/ButtonLogin';
+import { InputLogin } from '../../InputLogin';
+import { TextLogin } from '../../TextLogin';
+import { ModalAndWrapper } from './ModalAndWrapper';
 
-import { passVal } from "./Validate";
+import { passVal } from './Validate';
 
 const RegistrationThree = () => {
   // State toggle password | "text" or "password"
@@ -33,25 +33,25 @@ const RegistrationThree = () => {
     (state) => state.registration
   );
 
-  // Схема yup для для паролей
+  // Схема yup для паролей
   const formSchema = Yup.object().shape({
     passwordReg1: Yup.string()
-      .required("Необходимо заполнить")
-      .min(7, "Длина пароля должна быть не менее 7 символов"),
+      .required('Необходимо заполнить')
+      .min(7, 'Длина пароля должна быть не менее 7 символов'),
     passwordReg2: Yup.string()
-      .required("Требуется подтверждение пароля")
-      .oneOf([Yup.ref("passwordReg1")], "Пароли должны совпадать"),
+      .required('Требуется подтверждение пароля')
+      .oneOf([Yup.ref('passwordReg1')], 'Пароли должны совпадать')
   });
 
   // HOOK USE FORM
   const {
     register,
     formState: { errors },
-    handleSubmit,
+    handleSubmit
   } = useForm({
-    mode: "onSubmit",
+    mode: 'onSubmit',
     resolver: yupResolver(formSchema),
-    defaultValues: { passwordReg1: password, passwordReg2: passwordConfirm },
+    defaultValues: { passwordReg1: password, passwordReg2: passwordConfirm }
   });
 
   // Dispatch
@@ -66,7 +66,7 @@ const RegistrationThree = () => {
   // (f) next page
   const nextStep = (data) => {
     saveFormInput(data);
-    next("/registrationconfirm");
+    next('/registrationconfirm');
   };
 
   return (
@@ -81,7 +81,7 @@ const RegistrationThree = () => {
           name="passwordReg1"
           mode="inputLine"
           label="Пароль"
-          type={showPasswordReg1 ? "text" : "password"}
+          type={showPasswordReg1 ? 'text' : 'password'}
           iconEyeToggle={setShowPasswordReg1}
           autoFocus
           refButtonNextPage={refButtonNextPage}
@@ -94,16 +94,16 @@ const RegistrationThree = () => {
           name="passwordReg2"
           mode="inputLine"
           label="Повторите пароль"
-          type={showPasswordReg2 ? "text" : "password"}
+          type={showPasswordReg2 ? 'text' : 'password'}
           iconEyeToggle={setShowPasswordReg2}
           refButtonNextPage={refButtonNextPage}
         />
 
         <div
           style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-around",
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-around'
           }}
         >
           <Link to="/registrationtwo">

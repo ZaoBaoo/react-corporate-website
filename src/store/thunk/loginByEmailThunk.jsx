@@ -1,8 +1,8 @@
-import { loginAction } from "../slice/loginSlice";
+import { loginAction } from '../slice/loginSlice';
 
 // Firebase
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const loginByEmailThunk = (payload) => {
   return async (dispatch) => {
@@ -17,39 +17,39 @@ const loginByEmailThunk = (payload) => {
       //
     } catch (error) {
       let messageError;
-      const emailInputname = "emailLogin";
-      const passwordInputname = "passwordLogin";
+      const emailInputname = 'emailLogin';
+      const passwordInputname = 'passwordLogin';
 
       switch (error.message) {
         //
-        case "Firebase: Error (auth/user-not-found).":
-          messageError = "Не удалось найти аккаун с такой почтой";
+        case 'Firebase: Error (auth/user-not-found).':
+          messageError = 'Не удалось найти аккаун с такой почтой';
           dispatch(
             loginAction.setError({
               name: emailInputname,
-              message: messageError,
+              message: messageError
             })
           );
           break;
         //
-        case "Firebase: Error (auth/wrong-password).":
+        case 'Firebase: Error (auth/wrong-password).':
           messageError =
             'Неверный пароль. Повторите попытку или нажмите на "Забыли пароль?"';
           dispatch(
             loginAction.setError({
               name: passwordInputname,
-              message: messageError,
+              message: messageError
             })
           );
           break;
         //
-        case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
+        case 'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).':
           messageError =
-            "Доступ отключен из-за большого количества неудачных попыток, попробуйте позже";
+            'Доступ временно заблокирован из-за большого количества неудачных попыток, попробуйте позже';
           dispatch(
             loginAction.setError({
               name: passwordInputname,
-              message: messageError,
+              message: messageError
             })
           );
           break;
@@ -58,7 +58,7 @@ const loginByEmailThunk = (payload) => {
           dispatch(
             loginAction.setError({
               name: emailInputname,
-              message: error.code,
+              message: error.code
             })
           );
           break;

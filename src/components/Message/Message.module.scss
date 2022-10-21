@@ -1,65 +1,63 @@
 .messageBlock {
-    word-wrap: break-word;
-    border-radius: 6px;
-    padding: 1rem 4.5rem 1rem 1.5rem;
-    position: relative;
-    max-width: 70%;
+  word-wrap: break-word;
+  border-radius: 6px;
+  padding: 1rem 4.5rem 1rem 1.5rem;
+  position: relative;
+  max-width: 70%;
 
-    .messageDate {
-        position: absolute;
-        right: 0.7rem;
-        bottom: 0.7rem;
-    }
+  .messageDate {
+    position: absolute;
+    right: 0.7rem;
+    bottom: 0.7rem;
+  }
 }
 
 .messageLeft {
-    display: flex;
-    justify-content: baseline;
-    .messageBlock {
-        background: #DFDFDF;
+  display: flex;
+  justify-content: flex-start;
+  .messageBlock {
+    background: #dfdfdf;
 
-        .messageText {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.4rem;
-            line-height: 1.7rem;
-            color: #4F4F4F;
-        }
-        .messageDate {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.2rem;
-            line-height: 1.5rem;
-            color: #808080;
-        }
+    .messageText {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
+      color: #4f4f4f;
     }
-    
+    .messageDate {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      color: #808080;
+    }
+  }
 }
 
 .messageRight {
-    display: flex;
-    justify-content: end;
-    .messageBlock {
-        background: #818DCB;
+  display: flex;
+  justify-content: flex-end;
+  .messageBlock {
+    background: #818dcb;
 
-        .messageText {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.4rem;
-            line-height: 1.7rem;
-            color: #FFFFFF;
-        }
-        .messageDate {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.2rem;
-            line-height: 1.5rem;
-            color: #CCCCCC; 
-        }
+    .messageText {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
+      color: #ffffff;
     }
-    
+    .messageDate {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      color: #cccccc;
+    }
+  }
 }

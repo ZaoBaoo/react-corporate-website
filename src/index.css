@@ -83,6 +83,10 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app {
+  position: relative;
+}
+
 *,
 *::before,
 *,

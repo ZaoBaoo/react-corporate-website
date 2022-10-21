@@ -60,7 +60,7 @@ const Login = () => {
 
   // (e) Установка ошибки если она появляется в STORE
   useEffect(() => {
-    // Проверяем наличие свойст у объекта с ошибками
+    // Проверяем наличие свойств у объекта с ошибками
     const isError = Object.keys(errorLogin).length;
 
     if (isError) {
@@ -70,7 +70,7 @@ const Login = () => {
 
   // (e) Удаление ошибки если она отсутвствует в STORE
   useEffect(() => {
-    // Проверяем наличие свойст у объекта с ошибками
+    // Проверяем наличие свойств у объекта с ошибками
     const isError = Object.keys(errorLogin).length;
 
     if (!isError) {
