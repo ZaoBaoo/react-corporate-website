@@ -1,19 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 // Components
-import { Message } from "../Message";
+import { Message } from '../Message';
 
 // Styles
-import styles from "./Dialog.module.scss";
+import styles from './Dialog.module.scss';
 
 // Hooks
-import { useLoadChat } from "../../hooks/useLoadChat";
+import { useLoadChat } from '../../hooks/useLoadChat';
 
 // Store
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 // Tools func
-import { getDateHoursAndMinutes } from "../../tool-function/getDateHoursAndMinutes.js";
+import { getDateHoursAndMinutes } from '../../tool-function/getDateHoursAndMinutes.js';
 
 const Dialog = ({ handlerScroll }) => {
   const [messages] = useLoadChat();
@@ -34,12 +34,20 @@ const Dialog = ({ handlerScroll }) => {
     <div ref={dialogRef} className={styles.dialog}>
       {messages &&
         messages.map((i) => {
-          const position = i.from === uidForShowChat ? "left" : "right";
+          const position = i.from === uidForShowChat ? 'left' : 'right';
           const text = i.text;
-          const date = getDateHoursAndMinutes(i.dateAt);
           const key = i.dateAt;
+          const time = getDateHoursAndMinutes(i.dateAt)[0];
+          const date = getDateHoursAndMinutes(i.dateAt)[1];
+
           return (
-            <Message position={position} text={text} date={date} key={key} />
+            <Message
+              position={position}
+              text={text}
+              date={date}
+              time={time}
+              key={key}
+            />
           );
         })}
     </div>

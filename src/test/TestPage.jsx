@@ -1,67 +1,18 @@
-//  ДЛЯ ТЕСТИРОВАНИЯ ИСПОЛЬЗОВАТЬ ТОЛЬКО ПОЛЬОВАТЕЛЯ:
-//
-//
-//               test@gg.gg
-//               test@gg.gg
-
-//               test2@gg.gg
-//               test2@gg.gg
-//
-//
-//
-// Нормальные правила до ввода функции ЛИЧНЫЕ СООБЩЕНИЯ:
-//
-// {
-//   "rules": {
-//     "users": {
-//       ".read": true,
-//       "$uid": {
-//         ".write": "$uid === auth.uid"
-//       }
-//     }
-//   }
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // firebase
-import { auth } from "../firebase";
-import { db } from "../firebase";
-import { get, ref, set, onValue, push, update } from "firebase/database";
+import { auth } from '../firebase';
+import { db } from '../firebase';
+import { get, ref, set, onValue, push, update } from 'firebase/database';
 import {
   signInWithEmailAndPassword,
   updatePassword,
-  sendPasswordResetEmail,
-} from "firebase/auth";
+  sendPasswordResetEmail
+} from 'firebase/auth';
 
 // Styles
-import styles from "./TestPage.module.scss";
-import { async } from "@firebase/util";
+import styles from './TestPage.module.scss';
+import { async } from '@firebase/util';
 
 // const OTHER_USER_UID = "QPRtv6R3GndKDXNnk7JRc4yDEA83";
 
@@ -80,20 +31,20 @@ const getConcatArray = (arr1, arr2) => {
 
 const TestPage = () => {
   // State
-  const [data, setData] = useState({ email: "", password: "" });
-  const [textMessage, setTextMessage] = useState("");
+  const [data, setData] = useState({ email: '', password: '' });
+  const [textMessage, setTextMessage] = useState('');
   const [myMessagesList, setMyMessagesList] = useState([]);
   const [userMessagesList, setUserMessagesList] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
   // TEST
-  const [OTHER_USER_UID, setOTHER_USER_UID] = useState("");
+  const [OTHER_USER_UID, setOTHER_USER_UID] = useState('');
 
   // (f) setState
   const dataHandler = (e) => {
     setData((data) => {
       data[e.target.type] = e.target.value;
       return {
-        ...data,
+        ...data
       };
     });
   };
@@ -140,7 +91,7 @@ const TestPage = () => {
       await set(refForNewMessage, {
         date: DATE.toISOString(),
         dateAt: DATE.getTime(),
-        text: text,
+        text: text
       });
     }
 
@@ -157,7 +108,7 @@ const TestPage = () => {
         from: auth.currentUser.uid,
         date: DATE.toISOString(),
         dateAt: DATE.getTime(),
-        text: text,
+        text: text
       });
     }
 
@@ -174,9 +125,9 @@ const TestPage = () => {
     // sendNewMessageOtherUser(textMessage);
     sendNewMessageToYourself(textMessage);
     // changeFieldNotificationToTrue();
-    setTextMessage("");
+    setTextMessage('');
 
-    console.log("Отправлено");
+    console.log('Отправлено');
   };
 
   // (f) Обработчик сообщений
@@ -200,7 +151,7 @@ const TestPage = () => {
   useEffect(() => {
     return auth.onAuthStateChanged(async (user) => {
       if (user && OTHER_USER_UID) {
-        console.log("start");
+        console.log('start');
         const messageProcessing = (rawData) => {
           return rawData.val() ? Object.values(rawData.val().message) : [];
         };
@@ -212,7 +163,7 @@ const TestPage = () => {
               `/DBMessages/${auth.currentUser.uid}/dialogues/${OTHER_USER_UID}`
             ),
             (snapshot) => {
-              console.log("Сообщения мои");
+              console.log('Сообщения мои');
               const dataMessage = messageProcessing(snapshot);
               setMyMessagesList(dataMessage);
               resolve(dataMessage);
@@ -227,7 +178,7 @@ const TestPage = () => {
               `/DBMessages/${OTHER_USER_UID}/dialogues/${auth.currentUser.uid}`
             ),
             (snapshot) => {
-              console.log("Сообщения пользователя");
+              console.log('Сообщения пользователя');
               const dataMessage = messageProcessing(snapshot);
               setUserMessagesList(dataMessage);
               resolve(dataMessage);
@@ -235,7 +186,7 @@ const TestPage = () => {
           );
         });
 
-        console.log("Promise.all");
+        console.log('Promise.all');
 
         const response = await Promise.all([myMessages, userMessages]);
 
@@ -290,7 +241,7 @@ const TestPage = () => {
 
           <div className={styles.statusBar}>
             <span className={styles.titleUser}>
-              Вы:{" "}
+              Вы:{' '}
               <span
                 className={
                   auth.currentUser
@@ -298,7 +249,7 @@ const TestPage = () => {
                     : styles.titleUserStatusOffline
                 }
               >
-                {auth.currentUser ? auth.currentUser.email : "не в сети"}
+                {auth.currentUser ? auth.currentUser.email : 'не в сети'}
               </span>
             </span>
             <div className={styles.userGroup}>
@@ -306,7 +257,7 @@ const TestPage = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setOTHER_USER_UID("Od7R2Epsz0QzDKdRp0Jie52CLOr2")
+                  setOTHER_USER_UID('Od7R2Epsz0QzDKdRp0Jie52CLOr2')
                 }
               >
                 test@gg.gg
@@ -314,7 +265,7 @@ const TestPage = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setOTHER_USER_UID("AGgmP5HBP2dXyJyG4ZHLKWT8IFf2")
+                  setOTHER_USER_UID('AGgmP5HBP2dXyJyG4ZHLKWT8IFf2')
                 }
               >
                 test2@gg.gg
@@ -322,7 +273,7 @@ const TestPage = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setOTHER_USER_UID("aHWYmcdJUJV8QVQbYMlMzCgXF122")
+                  setOTHER_USER_UID('aHWYmcdJUJV8QVQbYMlMzCgXF122')
                 }
               >
                 test3@gg.gg

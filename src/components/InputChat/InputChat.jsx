@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 // Firebase
-import { push, ref, set } from 'firebase/database';
+import { push, ref, set, serverTimestamp } from 'firebase/database';
 import { auth, db } from '../../firebase';
 
 // Styles
@@ -27,8 +27,6 @@ const InputChat = ({ handlerScroll }) => {
   const sendMessage = async () => {
     if (!textMessage) return;
 
-    const DATE = new Date();
-
     // Отправить сообщение себе
     async function sendNewMessageToYourself(text) {
       const refForNewMessage = push(
@@ -40,8 +38,7 @@ const InputChat = ({ handlerScroll }) => {
 
       await set(refForNewMessage, {
         from: auth.currentUser.uid,
-        date: DATE.toISOString(),
-        dateAt: DATE.getTime(),
+        dateAt: serverTimestamp(),
         text: text
       });
     }

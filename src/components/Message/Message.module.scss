@@ -9,6 +9,8 @@
     position: absolute;
     right: 0.7rem;
     bottom: 0.7rem;
+
+    cursor: pointer;
   }
 }
 
@@ -59,5 +61,23 @@
       line-height: 1.5rem;
       color: #cccccc;
     }
+  }
+}
+
+.messageTooltip {
+  background: #626262 !important;
+  padding: 0.2rem !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 1.3rem !important;
+  line-height: 1.5rem !important;
+  color: #ffffff !important;
+
+  &::before,
+  &::after {
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
   }
 }
