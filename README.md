@@ -1,70 +1,84 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 👥 Корпоративная сеть для сотрудников
 
-## Available Scripts
+Веб-приложение для внутреннего взаимодействия сотрудников компании. Позволяет удобно искать коллег, просматривать профили и быстро связываться с любым сотрудником в режиме реального времени.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Демо
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔗 **Онлайн-доступ:** [react-corporate-website](https://zaobaoo.github.io/react-corporate-website)
+- 🎥 **Видео-демо:** [ссылка](https://zaobaoo.github.io/demo-pages/corporate-website.html)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧩 Возможности
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Регистрация и авторизация
+- Редактируемый профиль: имя, фамилия, отдел, должность, телефон, аватарка
+- Поиск по имени, фамилии, должности, отделу
+- Реал-тайм чат между сотрудниками
+- Сброс пароля
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Технологии
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Frontend:**
+- [React](https://react.dev/)
+- [React Router DOM](https://reactrouter.com/) — маршрутизация
+- [React Hook Form](https://react-hook-form.com/) + [Yup](https://github.com/jquense/yup) — валидация форм
+- [Redux Toolkit](https://redux-toolkit.js.org/) - стейт менеджер
+- [Framer Motion](https://www.framer.com/motion/) — анимации
+- [Firebase](https://firebase.google.com/) — аутентификация, база данных, хранение файлов
+- [Sass](https://sass-lang.com/) — стили
+- [React Tooltip](https://react-tooltip.com/) — тултипы
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Сборка и инструменты:**
+- `gh-pages` — деплой на GitHub Pages
+- `eslint` + `prettier` — линтинг и форматирование кода
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Как запустить
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Установка зависимостей
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Локальный запуск
+npm run dev
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Сборка для продакшена
+npm run build
 
-## Learn More
+# Предпросмотр прод-версии
+npm run preview
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Линтинг
+npm run lint
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📁 Структура проекта
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `/src` — исходный код
+- `/public` — статика
+- `/build`
+- `.eslintrc`, `.prettierrc` — правила линтера и форматтера
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🖥️ Деплой
 
-### Making a Progressive Web App
+Проект развёрнут на **GitHub Pages** по адресу:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+🔗 [https://zaobaoo.github.io/react-corporate-website/](https://zaobaoo.github.io/react-corporate-website/)
 
-### Advanced Configuration
+Для деплоя используется `gh-pages`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+yarn build
+npx gh-pages -d dist
+```
