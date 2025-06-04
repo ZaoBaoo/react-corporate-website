@@ -5,6 +5,12 @@
 
 ---
 
+## Данные для тестового входа
+- Логин: yurkin.daniil96@gmail.com
+- Пароль: 123456789
+
+---
+
 ## 🚀 Демо
 
 - 🔗 **Онлайн-доступ:** [react-corporate-website](https://zaobaoo.github.io/react-corporate-website)
